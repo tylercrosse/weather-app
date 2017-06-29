@@ -16,7 +16,6 @@ class Search extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    console.log('submitted! 📬:', this.state.draft)
     this.setState({
       draft: ''
     })
