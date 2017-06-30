@@ -30,27 +30,12 @@ export const fetchForecast = ({ lat, lng }) => dispatch => {
 };
 
 // reducers
-export const location = (state, action) => {
-  switch (action.type) {
-    case FORECAST_SUCCESS:
-      const lat = action.payload.latitude;
-      const lng = action.payload.longitude;
-      return {
-        [lat + ":" + lng]: {
-          ...action.payload
-        }
-      };
-    default:
-      return state;
-  }
-};
-
 const weather = (state = {}, action) => {
   switch (action.type) {
     case FORECAST_SUCCESS:
       return {
         ...state,
-        ...location(undefined, action)
+        ...action.payload
       };
     default:
       return state;
