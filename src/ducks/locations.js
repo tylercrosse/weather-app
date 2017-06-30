@@ -1,4 +1,5 @@
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
+import { fetchForecast } from './weather';
 
 // actions
 export const GEOLOCATION_REQUEST = "GEOLOCATION_REQUEST";
@@ -8,6 +9,7 @@ export const GEOLOCATION_FAILURE = "GEOLOCATION_FAILURE";
 // action creators
 export const geocode = address => dispatch => {
   dispatch({ type: GEOLOCATION_REQUEST });
+  
   geocodeByAddress(address)
     .then(async (results) => {
       const res = results[0];
@@ -26,6 +28,7 @@ export const geocode = address => dispatch => {
           ...location
         }
       });
+      dispatch(fetchForecast(location))
     })
     .catch(error => {
       console.log("Oh no!", error);
