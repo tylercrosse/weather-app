@@ -1,4 +1,5 @@
 import { createStore, compose, applyMiddleware } from "redux";
+import { autoRehydrate } from "redux-persist";
 import thunk from "redux-thunk";
 import rootReducer from "../ducks";
 
@@ -12,6 +13,7 @@ const configureStore = initialState => {
     initialState,
     compose(
       applyMiddleware(...middlewares),
+      autoRehydrate(),
       window.__REDUX_DEVTOOLS_EXTENSION__
         ? window.__REDUX_DEVTOOLS_EXTENSION__()
         : f => f

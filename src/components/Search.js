@@ -14,11 +14,10 @@ class Search extends React.Component {
     });
   }
   handleSelect = (address) => {
-    this.setState({
-      address
-    })
-
     this.props.geocode(address)
+    this.setState({
+      address: ''
+    })
   }
   render() {
     const inputProps = {

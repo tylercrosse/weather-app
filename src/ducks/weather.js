@@ -4,7 +4,7 @@ export const FORECAST_SUCCESS = "FORECAST_SUCCESS";
 export const FORECAST_FAILURE = "FORECAST_FAILURE";
 
 // action creators
-export const fetchForecast = ({ lat, lng }) => dispatch => {
+export const fetchForecast = ({ lat, lng, address }) => dispatch => {
   const uri = `/api/forecast/${lat},${lng}`
 
   dispatch({ type: FORECAST_REQUEST });
@@ -16,7 +16,8 @@ export const fetchForecast = ({ lat, lng }) => dispatch => {
       dispatch({
         type: FORECAST_SUCCESS,
         payload: {
-          ...json
+          ...json,
+          address
         }
       });
     })
