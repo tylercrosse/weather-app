@@ -1,37 +1,40 @@
 import React from 'react';
+import PlacesAutoComplete from 'react-places-autocomplete';
 
 class Search extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      draft: ''
+      address: ''
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange(e) {
+  handleChange = (address) => {
     this.setState({
-      draft: e.target.value
+      address
     });
   }
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSelect = (address) => {
     this.setState({
-      draft: ''
+      address
     })
+
+    this.props.geocode(address)
   }
   render() {
+    const inputProps = {
+      type: 'text',
+      value: this.state.address,
+      onChange: this.handleChange,
+      autoFocus: true,
+      placeholder: "Search Places",
+    }
+
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.draft}
-          placeholder="Enter location"
-          autoFocus
-        />
-        <button type="submit">Search</button>
-      </form>
+      <PlacesAutoComplete
+        inputProps={inputProps}
+        onSelect={this.handleSelect}
+        onEnterKeyDown={this.handleSelect}
+      />
     )
   }
 }

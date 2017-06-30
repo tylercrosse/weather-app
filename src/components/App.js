@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { geocode } from '../ducks/locations';
 import Search from './Search';
 import './App.css';
 
 class App extends Component {
-  componentDidMount() {
-    console.log('locations 🗺:', this.props.locations)
-  }
   render() {
     return (
       <div className="App">
-        <Search />
+        <Search geocode={this.props.geocode} />
       </div>
     );
   }
@@ -21,5 +19,6 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  { geocode }
 )(App);
