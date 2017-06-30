@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { geocode } from '../ducks/locations';
 import Search from './Search';
 import CurrentWeather from './CurrentWeather'
+import Forecast from './forecast/Forecast'
 import './App.css';
 
 class App extends Component {
@@ -12,6 +13,9 @@ class App extends Component {
         <Search geocode={this.props.geocode} />
         {this.props.weather.currently && (
           <CurrentWeather weather={this.props.weather} />
+        )}
+        {this.props.weather.daily && (
+          <Forecast weather={this.props.weather} />
         )}
       </div>
     );
