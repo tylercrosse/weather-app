@@ -3,11 +3,11 @@ import DayItem from './DayItem';
 
 const Forecast = ({ weather }) => {
   const dayItems = weather.daily.data.map(day => (
-    <DayItem day={day} />
+    <DayItem key={day.time} day={day} />
   ))
 
   return (
-    <div>
+    <div className="forecast" >
       {dayItems}
     </div>
   )

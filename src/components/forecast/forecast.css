@@ -1,0 +1,8 @@
+.forecast {
+  display: flex;
+  justify-content: center;
+}
+
+.dayItem {
+  text-align: center;
+}

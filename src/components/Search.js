@@ -20,6 +20,17 @@ class Search extends React.Component {
     })
   }
   render() {
+    const AutocompleteItem = ({ formattedSuggestion }) => (
+      <div className="search__item">
+        <strong>{formattedSuggestion.mainText}</strong>{' '}
+        <small className="text-muted">{formattedSuggestion.secondaryText}</small>
+      </div>
+    )
+    const cssClasses = {
+      root: 'search__bar',
+      input: 'search__input',
+      autocompleteContainer: 'search__autocomplete_container',
+    }
     const inputProps = {
       type: 'text',
       value: this.state.address,
@@ -29,11 +40,15 @@ class Search extends React.Component {
     }
 
     return (
-      <PlacesAutoComplete
-        inputProps={inputProps}
-        onSelect={this.handleSelect}
-        onEnterKeyDown={this.handleSelect}
-      />
+      <div className="search">
+        <PlacesAutoComplete
+          inputProps={inputProps}
+          onSelect={this.handleSelect}
+          onEnterKeyDown={this.handleSelect}
+          classNames={cssClasses}
+          autocompleteItem={AutocompleteItem}
+        />
+      </div>
     )
   }
 }
