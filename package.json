@@ -14,6 +14,7 @@
     "react-dom": "^15.6.1",
     "react-places-autocomplete": "^5.3.1",
     "react-redux": "^5.0.5",
+    "react-vis": "^1.6.4",
     "redux": "^3.7.1",
     "redux-persist": "^4.8.2",
     "redux-thunk": "^2.2.0"
