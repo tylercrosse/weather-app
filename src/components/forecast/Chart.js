@@ -6,6 +6,7 @@ import {
   XAxis,
   YAxis,
   HorizontalGridLines,
+  AreaSeries,
   LineSeries,
   Crosshair
 } from "react-vis";
@@ -51,14 +52,15 @@ function itemsFormat(values) {
 }
 
 /**
- * Format hourly data for use with react-vis
+ * Get hourly data for a given parameter for  use with react-vis
  * @param  {Array} hourlyData Array of hourly data.
+ * @param  {String} paramName Name of parameter to use for y value.
  * @return {Array}            Formatted list of items.
  */
-function formatData(hourlyData) {
+function getDataForParam(hourlyData, paramName) {
   return hourlyData.map(hour => ({
     x: hour.time,
-    y: hour.temperature
+    y: hour[paramName]
   }));
 }
 
@@ -80,34 +82,112 @@ class Chart extends React.Component {
     this.setState({crosshairValues: []})
   }
   render() {
-    const formatedTemps = formatData(this.props.hourlyData);
+    const tempData = getDataForParam(this.props.hourlyData, 'temperature');
+    const percipProbData = getDataForParam(this.props.hourlyData, 'precipProbability');
+    const humidityData = getDataForParam(this.props.hourlyData, 'humidity');
+    const cloudCoverData = getDataForParam(this.props.hourlyData, 'cloudCover');
+    const windGustData = getDataForParam(this.props.hourlyData, 'windGust');
+    const windSpeedData = getDataForParam(this.props.hourlyData, 'windSpeed');
 
     return (
-      <XYPlot
-        animation
-        className="forecast__chart"
-        height={200}
-        width={900}
-        onMouseLeave={this.handleMouseLeave}
-      >
-        <XAxis tickFormat={v => moment.unix(v).format('dd h a')} />
-        <YAxis />
-        <HorizontalGridLines />
-        <LineSeries
-          color="red"
-          curve="curveMonotoneX"
-          data={formatedTemps}
-          style={{
-            fill: "none"
-          }}
-          onNearestX={this.handleNearestX}
-        />
-        <Crosshair
-          values={this.state.crosshairValues}
-          titleFormat={titleFormat}
-          itemsFormat={itemsFormat}
-        />
-      </XYPlot>
+      <div>
+        <XYPlot
+          animation
+          className="forecast__chart"
+          height={200}
+          width={900}
+          onMouseLeave={this.handleMouseLeave}
+          >
+            <XAxis
+              hideLine
+              top={0}
+              tickTotal={12}
+              tickFormat={v => moment.unix(v).format('dd h a')}
+            />
+            <YAxis />
+            <HorizontalGridLines />
+            <LineSeries
+              color="red"
+              curve="curveMonotoneX"
+              data={tempData}
+              style={{
+                fill: "none"
+              }}
+              onNearestX={this.handleNearestX}
+            />
+            <Crosshair
+              values={this.state.crosshairValues}
+              titleFormat={titleFormat}
+              itemsFormat={itemsFormat}
+            />
+          </XYPlot>
+        <XYPlot
+          animation
+          className="forecast__chart"
+          height={160}
+          width={900}
+          onMouseLeave={this.handleMouseLeave}
+          >
+            <YAxis />
+            <HorizontalGridLines />
+            <AreaSeries
+              color="blue"
+              curve="curveMonotoneX"
+              data={percipProbData}
+              style={{
+                fill: "rgba(31, 89, 217, 0.5)"
+              }}
+              // onNearestX={this.handleNearestX}
+            />
+            <LineSeries
+              color="green"
+              curve="curveMonotoneX"
+              data={humidityData}
+              style={{
+                fill: "none"
+              }}
+              // onNearestX={this.handleNearestX}
+            />
+            <AreaSeries
+              color="grey"
+              curve="curveMonotoneX"
+              data={cloudCoverData}
+              style={{
+                fill: "rgba(130, 130, 130, 0.2)"
+              }}
+              // onNearestX={this.handleNearestX}
+            />
+            <Crosshair
+              values={this.state.crosshairValues}
+              titleFormat={titleFormat}
+              itemsFormat={itemsFormat}
+            />
+          </XYPlot>
+        <XYPlot
+          animation
+          className="forecast__chart"
+          height={120}
+          width={900}
+          onMouseLeave={this.handleMouseLeave}
+          >
+            <YAxis />
+            <HorizontalGridLines />
+            <LineSeries
+              color="blue"
+              curve="curveMonotoneX"
+              data={windSpeedData}
+              style={{
+                fill: "none"
+              }}
+              // onNearestX={this.handleNearestX}
+            />
+            <Crosshair
+              values={this.state.crosshairValues}
+              titleFormat={titleFormat}
+              itemsFormat={itemsFormat}
+            />
+          </XYPlot>
+      </div>
     );
   }
 }
