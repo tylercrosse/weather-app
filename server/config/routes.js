@@ -1,26 +1,10 @@
 const express = require('express');
-const fetch = require('isomorphic-fetch');
+const forecastCtlr = require('../controllers/forecast');
+const isomorphicCtlr = require('../controllers/isomorphic');
 
 const router = express.Router();
 
-router.get('/api/forecast/:latlng', (req, res) => {
-  const uri = `https://api.darksky.net/forecast/1780bf38f274f706e6a341962cfa4f60/${req.params.latlng}?exclude=[minutely,flags]&extend=hourly`
-
-  console.log(uri);
-
-  // TODO improve error handling (response codes)
-  fetch(uri)
-    .then(response => response.json())
-    .then(json => res.json(json))
-    .catch(err => {
-      console.log('❌', error)
-    })
-})
-
-// serve index
-router.get('/*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
-});
-
+router.get('/api/forecast/:latlng', forecastCtlr.getForecast)
+router.get('/*', isomorphicCtlr.serveIndex);
 
 module.exports = router;
