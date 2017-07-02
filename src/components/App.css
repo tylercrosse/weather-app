@@ -2,6 +2,19 @@
   text-align: center;
 }
 
+.recentSearches {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.recentSearch__item {
+  background-color: #fcfcfc;
+  border: 0;
+  margin: 0 20px;
+  padding: 20px;
+  cursor: pointer;
+}
+
 .search {
   width: 600px;
   margin: 20px auto 0;
