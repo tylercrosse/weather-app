@@ -4,7 +4,7 @@ const fetch = require('isomorphic-fetch');
 const router = express.Router();
 
 router.get('/api/forecast/:latlng', (req, res) => {
-  const uri = `https://api.darksky.net/forecast/1780bf38f274f706e6a341962cfa4f60/${req.params.latlng}`
+  const uri = `https://api.darksky.net/forecast/1780bf38f274f706e6a341962cfa4f60/${req.params.latlng}?exclude=[minutely,flags]&extend=hourly`
 
   console.log(uri);
 

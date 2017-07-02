@@ -3,7 +3,7 @@ import DayItem from './DayItem';
 import Chart from './Chart'
 
 const Forecast = ({ weather }) => {
-  const dayItems = weather.daily.data.slice(0,3).map(day => (
+  const dayItems = weather.daily.data.map(day => (
     <DayItem key={day.time} day={day} />
   ))
   const hourlyData = weather.hourly.data;
