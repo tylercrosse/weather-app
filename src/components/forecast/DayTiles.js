@@ -4,7 +4,7 @@ import moment from 'moment';
 import 'moment-timezone';
 import './forecast.css';
 
-const DayTile = ({ day, timezone }) => {
+export const DayTile = ({ day, timezone }) => {
   const time = moment.unix(day.time).tz(timezone).format('ddd D');
   return (
     <div className="dayTile">
@@ -18,7 +18,11 @@ const DayTile = ({ day, timezone }) => {
 };
 
 DayTile.propTypes = {
-  day: PropTypes.object.isRequired,
+  day: PropTypes.shape({
+    temperatureMax: PropTypes.number.isRequired,
+    temperatureMin: PropTypes.number.isRequired,
+    icon: PropTypes.string.isRequired,
+  }),
   timezone: PropTypes.string.isRequired,
 }
 

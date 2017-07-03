@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should render correctly 1`] = `
+<div
+  className="App"
+>
+  <section
+    className="current"
+  >
+    <Search
+      geocode={[Function]}
+    />
+  </section>
+</div>
+`;

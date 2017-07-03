@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from "enzyme-to-json";
-import { Search } from './Search';
+import { ProbabilityPlot } from './ProbabilityPlot';
 
 const setup = () => {
   const props = {
@@ -11,7 +11,7 @@ const setup = () => {
     // fetchForecast: jest.fn(),
   }
 
-  const component = <Search {...props} />;
+  const component = <ProbabilityPlot {...props} />;
   const wrapper = shallow(component);
 
   return {
@@ -20,7 +20,7 @@ const setup = () => {
   }
 }
 
-describe('<Search />', () => {
+describe('<ProbabilityPlot />', () => {
   xit('should render correctly', () => {
     const { wrapper } = setup();
     expect(toJson(wrapper)).toMatchSnapshot();

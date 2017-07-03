@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DayTile /> should render correctly 1`] = `
+<div
+  className="dayTile"
+>
+  <div>
+    Invalid date
+  </div>
+  <div>
+    75
+     / 
+    45
+  </div>
+  <img
+    alt="fog"
+    src="../../fog.svg"
+  />
+</div>
+`;
+
+exports[`<DayTiles /> should render correctly 1`] = `
+<div
+  className="forecast__dayTiles"
+/>
+`;

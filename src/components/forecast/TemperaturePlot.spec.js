@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from "enzyme-to-json";
-import { Search } from './Search';
+import { TemperaturePlot } from './TemperaturePlot';
 
 const setup = () => {
   const props = {
@@ -11,7 +11,7 @@ const setup = () => {
     // fetchForecast: jest.fn(),
   }
 
-  const component = <Search {...props} />;
+  const component = <TemperaturePlot {...props} />;
   const wrapper = shallow(component);
 
   return {
@@ -20,7 +20,7 @@ const setup = () => {
   }
 }
 
-describe('<Search />', () => {
+describe('<TemperaturePlot />', () => {
   xit('should render correctly', () => {
     const { wrapper } = setup();
     expect(toJson(wrapper)).toMatchSnapshot();

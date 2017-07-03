@@ -36,7 +36,8 @@
     "precommit": "npm run test && lint-staged",
     "start": "concurrently \"node server\" \"react-scripts start\"",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage",
+    "test:watch": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "lint": "eslint .",
     "eject": "react-scripts eject"
   },
