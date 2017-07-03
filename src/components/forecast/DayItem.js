@@ -1,9 +1,10 @@
 import React from 'react';
 import moment from 'moment';
+import "moment-timezone";
 import './forecast.css'
 
-const DayItem = ({ day }) => {
-  const time = moment.unix(day.time).format('ddd D')
+const DayItem = ({ day, timezone }) => {
+  const time = moment.unix(day.time).tz(timezone).format('ddd D')
   return (
     <div className="dayItem">
       <div>{time}</div>

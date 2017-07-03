@@ -2,6 +2,7 @@
 
 import React from "react";
 import moment from "moment";
+import "moment-timezone";
 import TemperaturePlot from "../charts/TemperaturePlot";
 import ProbabilityPlot from "../charts/ProbabilityPlot";
 import WindSpeedPlot from "../charts/WindSpeedPlot";
@@ -13,22 +14,6 @@ import WindSpeedPlot from "../charts/WindSpeedPlot";
  */
 function getFirstNonEmptyValue(values) {
   return (values || []).find(v => Boolean(v));
-}
-
-/**
- * Format title for Crosshair.
- * @param {Array} values List of values.
- * @returns {*} Formatted value or undefined.
- */
-function titleFormat(values) {
-  const value = getFirstNonEmptyValue(values);
-
-  if (value) {
-    return {
-      title: "time",
-      value: moment.unix(value.x).format("dd h a")
-    };
-  }
 }
 
 /**
@@ -130,6 +115,7 @@ class Chart extends React.Component {
     };
     this.handleNearestX = this.handleNearestX.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.titleFormat = this.titleFormat.bind(this);
   }
   handleNearestX(value, { index }) {
     this.setState({
@@ -139,16 +125,33 @@ class Chart extends React.Component {
   handleMouseLeave() {
     this.setState({ crosshairValues: [] });
   }
+  /**
+   * Format title for Crosshair.
+   * @param {Array} values List of values.
+   * @returns {*} Formatted value or undefined.
+   */
+  titleFormat(values) {
+    const timezone = this.props.weather.timezone;
+    const value = getFirstNonEmptyValue(values);
+
+    if (value) {
+      return {
+        title: "time",
+        value: moment.unix(value.x).tz(timezone).format("dd h a")
+      };
+    }
+  }
   render() {
-    const { hourlyData } = this.props;
-    const { dailyData } = this.props;
+    const timezone = this.props.weather.timezone;
+    const hourlyData = this.props.weather.hourly.data;
+    const dailyData = this.props.weather.daily.data;
     const tempsData = selectDataByAttr(hourlyData, "temperature");
     const percipProbData = selectDataByAttr(hourlyData, "precipProbability");
     const humidityData = selectDataByAttr(hourlyData, "humidity");
     const cloudCoverData = selectDataByAttr(hourlyData, "cloudCover");
     const windSpeedData = selectDataByAttr(hourlyData, "windSpeed");
 
-    const currentTime = moment().format("X");
+    const currentTime = moment().tz(timezone).format("X");
     const tempsRange = selectRange(tempsData);
     const probRange = {min: 0, max: 1};
     const windRange = selectRange(windSpeedData);
@@ -162,41 +165,41 @@ class Chart extends React.Component {
     return (
       <div>
         <TemperaturePlot
+          crosshairValues={this.state.crosshairValues}
           handleMouseLeave={this.handleMouseLeave}
           handleNearestX={this.handleNearestX}
+          titleFormat={this.titleFormat}
+          itemsFormat={itemsFormat}
           dayDivsions={dayDivsions}
           currentTime={currentTime}
           tempsNightData={tempsNightData}
           tempsRange={tempsRange}
           tempsData={tempsData}
-          titleFormat={titleFormat}
-          itemsFormat={itemsFormat}
-          crosshairValues={this.state.crosshairValues}
         />
         <ProbabilityPlot
+          crosshairValues={this.state.crosshairValues}
           handleMouseLeave={this.handleMouseLeave}
           handleNearestX={this.handleNearestX}
           dayDivsions={dayDivsions}
+          titleFormat={this.titleFormat}
+          itemsFormat={itemsFormat}
           currentTime={currentTime}
           probNightData={probNightData}
           percipProbData={percipProbData}
           humidityData={humidityData}
           cloudCoverData={cloudCoverData}
-          titleFormat={titleFormat}
-          itemsFormat={itemsFormat}
-          crosshairValues={this.state.crosshairValues}
         />
         <WindSpeedPlot
+          crosshairValues={this.state.crosshairValues}
           handleMouseLeave={this.handleMouseLeave}
           handleNearestX={this.handleNearestX}
+          titleFormat={this.titleFormat}
+          itemsFormat={itemsFormat}
           dayDivsions={dayDivsions}
           currentTime={currentTime}
           windNightData={windNightData}
           windRange={windRange}
           windSpeedData={windSpeedData}
-          titleFormat={titleFormat}
-          itemsFormat={itemsFormat}
-          crosshairValues={this.state.crosshairValues}
         />
       </div>
     );
