@@ -9,6 +9,7 @@ import {
   VerticalGridLines,
   AreaSeries,
   LineSeries,
+  PolygonSeries,
   Crosshair
 } from "react-vis";
 import moment from "moment";
@@ -91,35 +92,33 @@ function buildDayDivisonData(hourlyData) {
   ];
 }
 
-// function buildNightData(hourlyData, dailyData, range) {
-//   const nightData = [
-//     {
-//       x: hourlyData[0].time,
-//       x0: dailyData[0].sunriseTime,
-//       y: range.min,
-//       y0: range.max
-//     },
-//     {
-//       x: dailyData[7].sunsetTime,
-//       x0: hourlyData[168].time,
-//       y: range.min,
-//       y0: range.max
-//     }
-//   ];
-//
-//   for (let i = 0; i < dailyData.length - 1; i++) {
-//     let rect = {}
-//     rect.x = dailyData[i].sunriseTime;
-//     rect.x0 = dailyData[i + 1].sunsetTime;
-//     rect.y = range.min;
-//     rect.y0 = range.max;
-//     nightData.push(rect);
-//   }
-//
-//   console.log(nightData)
-//
-//   return nightData;
-// }
+function buildNightData(hourlyData, dailyData, range) {
+  const leftmostRect = [
+    { x: hourlyData[0].time, y: range.min },
+    { x: hourlyData[0].time, y: range.max },
+    { x: dailyData[0].sunriseTime, y: range.max },
+    { x: dailyData[0].sunriseTime, y: range.min },
+  ];
+  const rightmostRect = [
+    { x: dailyData[6].sunsetTime, y: range.min },
+    { x: dailyData[6].sunsetTime, y: range.max },
+    { x: hourlyData[168].time, y: range.max },
+    { x: hourlyData[168].time, y: range.min },
+  ];
+  const nightData = [leftmostRect, rightmostRect]
+
+  for (let i = 0; i < 6; i++) {
+    let rect = [
+      { x: dailyData[i].sunsetTime, y: range.min},
+      { x: dailyData[i].sunsetTime, y: range.max},
+      { x: dailyData[i+1].sunriseTime, y: range.max},
+      { x: dailyData[i+1].sunriseTime, y: range.min},
+    ];
+    nightData.push(rect);
+  }
+
+  return nightData.reduce((a, b) => a.concat(b), []);
+}
 
 class Chart extends React.Component {
   constructor(props) {
@@ -149,30 +148,37 @@ class Chart extends React.Component {
 
     const currentTime = moment().format("X");
     const tempsRange = range(tempsData);
+    const probRange = {min: 0, max: 1};
     const windRange = range(windSpeedData);
 
     const dayDivsions = buildDayDivisonData(hourlyData);
 
-    // const tempsNightData = buildNightData(hourlyData, dailyData, tempsRange);
+    const tempsNightData = buildNightData(hourlyData, dailyData, tempsRange);
+    const probNightData = buildNightData(hourlyData, dailyData, probRange);
+    const windNightData = buildNightData(hourlyData, dailyData, windRange);
 
     return (
       <div>
         <XYPlot
           animation
-          className="forecast__chart"
+          className="forecast__chart chart__temps"
           height={200}
           width={880}
           onMouseLeave={this.handleMouseLeave}
         >
-          <XAxis
-            hideLine
-            top={0}
-            tickTotal={14}
-            tickFormat={v => moment.unix(v).format("h a")}
+          <YAxis
+            left={6}
+            tickFormat={v => `${v}°F`}
           />
-          <YAxis />
           <HorizontalGridLines />
           <VerticalGridLines tickValues={dayDivsions} />
+          <AreaSeries
+            data={tempsNightData}
+            style={{
+              stroke: "none",
+              fill: "rgba(130, 130, 130, 0.1)"
+            }}
+          />
           <LineSeries
             color="grey"
             opacity={0.4}
@@ -198,19 +204,29 @@ class Chart extends React.Component {
         </XYPlot>
         <XYPlot
           animation
-          className="forecast__chart"
+          className="forecast__chart chart__prob"
           yDomain={[0, 1]}
           height={160}
           width={880}
           onMouseLeave={this.handleMouseLeave}
         >
-          <YAxis />
+          <YAxis
+            left={6}
+            tickFormat={v => `${v * 100}%`}
+          />
           <HorizontalGridLines />
           <VerticalGridLines tickValues={dayDivsions} />
           <LineSeries
             color="grey"
             opacity={0.4}
             data={[{ x: currentTime, y: 0 }, { x: currentTime, y: 1 }]}
+          />
+          <AreaSeries
+            data={probNightData}
+            style={{
+              stroke: "none",
+              fill: "rgba(130, 130, 130, 0.1)"
+            }}
           />
           <AreaSeries
             color="blue"
@@ -247,12 +263,15 @@ class Chart extends React.Component {
         </XYPlot>
         <XYPlot
           animation
-          className="forecast__chart"
+          className="forecast__chart chart__wind"
           height={120}
           width={880}
           onMouseLeave={this.handleMouseLeave}
         >
-          <YAxis />
+          <YAxis
+            left={6}
+            tickFormat={v => `${v} mph`}
+          />
           <HorizontalGridLines />
           <VerticalGridLines tickValues={dayDivsions} />
           <LineSeries
@@ -262,6 +281,13 @@ class Chart extends React.Component {
               { x: currentTime, y: windRange.min },
               { x: currentTime, y: windRange.max }
             ]}
+          />
+          <AreaSeries
+            data={windNightData}
+            style={{
+              stroke: "none",
+              fill: "rgba(130, 130, 130, 0.1)"
+            }}
           />
           <LineSeries
             color="blue"

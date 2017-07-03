@@ -11,6 +11,17 @@
   margin: 0 auto;
 }
 
+.chart__temps {
+  height: 170px !important;
+}
+
+.chart__prob {
+  height: 130px !important;
+}
+
+.chart__wind {
+}
+
 .dayItem {
   text-align: center;
   padding: 0 10px;
