@@ -1,18 +1,10 @@
 /* eslint-disable array-callback-return */
 
 import React from "react";
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  HorizontalGridLines,
-  VerticalGridLines,
-  AreaSeries,
-  LineSeries,
-  PolygonSeries,
-  Crosshair
-} from "react-vis";
 import moment from "moment";
+import TemperaturePlot from "../charts/TemperaturePlot";
+import ProbabilityPlot from "../charts/ProbabilityPlot";
+import WindSpeedPlot from "../charts/WindSpeedPlot";
 
 /**
  * Get the first non-empty item from an array.
@@ -66,22 +58,23 @@ function selectDataByAttr(hourlyData, attributeName) {
 }
 
 /**
- * Finds range (min & max values) from an array of formated data.
+ * Selects range (min & max values) from an array of formated data.
  * @param  {Array}  arr Array of formated objects with 'x' attributes
  * @return {Object}     Object with min and max attributes
  */
-function range(arr) {
+function selectRange(arr) {
   const min = arr.reduce((prev, curr) => (prev.y < curr.y ? prev : curr));
   const max = arr.reduce((prev, curr) => (prev.y > curr.y ? prev : curr));
   return { min: min.y, max: max.y };
 }
 
 /**
- * Builds array of time values each 24 hrs apart.
- * @param  {Array} hourlyData Array of 168 objects of hour data
+ * Constructs array of time values each 24 hrs apart by selecting from hourly
+ * data.
+ * @param  {Array} hourlyData Array of 168+ objects of hour data
  * @return {Array}            Array of values to use as ticks for gridlines
  */
-function buildDayDivisonData(hourlyData) {
+function selectDayDivisonData(hourlyData) {
   return [
     hourlyData[24].time,
     hourlyData[48].time,
@@ -92,7 +85,16 @@ function buildDayDivisonData(hourlyData) {
   ];
 }
 
-function buildNightData(hourlyData, dailyData, range) {
+/**
+ * Constructs array of objects for use in night time area plot by selecting
+ * values from hourly time data and daily sunrise and sunset data and matching
+ * them with a range information.
+ * @param  {Array} hourlyData List of 168+ objects of hour data
+ * @param  {Array} dailyData  List of 7+ objects of day data
+ * @param  {Object} range     Object with min & max attributes
+ * @return {Array}            Formated list of data points
+ */
+function selectNightData(hourlyData, dailyData, range) {
   const leftmostRect = [
     { x: hourlyData[0].time, y: range.min },
     { x: hourlyData[0].time, y: range.max },
@@ -147,163 +149,55 @@ class Chart extends React.Component {
     const windSpeedData = selectDataByAttr(hourlyData, "windSpeed");
 
     const currentTime = moment().format("X");
-    const tempsRange = range(tempsData);
+    const tempsRange = selectRange(tempsData);
     const probRange = {min: 0, max: 1};
-    const windRange = range(windSpeedData);
+    const windRange = selectRange(windSpeedData);
 
-    const dayDivsions = buildDayDivisonData(hourlyData);
+    const dayDivsions = selectDayDivisonData(hourlyData);
 
-    const tempsNightData = buildNightData(hourlyData, dailyData, tempsRange);
-    const probNightData = buildNightData(hourlyData, dailyData, probRange);
-    const windNightData = buildNightData(hourlyData, dailyData, windRange);
+    const tempsNightData = selectNightData(hourlyData, dailyData, tempsRange);
+    const probNightData = selectNightData(hourlyData, dailyData, probRange);
+    const windNightData = selectNightData(hourlyData, dailyData, windRange);
 
     return (
       <div>
-        <XYPlot
-          animation
-          className="forecast__chart chart__temps"
-          height={200}
-          width={880}
-          onMouseLeave={this.handleMouseLeave}
-        >
-          <YAxis
-            left={6}
-            tickFormat={v => `${v}°F`}
-          />
-          <HorizontalGridLines />
-          <VerticalGridLines tickValues={dayDivsions} />
-          <AreaSeries
-            data={tempsNightData}
-            style={{
-              stroke: "none",
-              fill: "rgba(130, 130, 130, 0.1)"
-            }}
-          />
-          <LineSeries
-            color="grey"
-            opacity={0.4}
-            data={[
-              { x: currentTime, y: tempsRange.min },
-              { x: currentTime, y: tempsRange.max }
-            ]}
-          />
-          <LineSeries
-            color="red"
-            curve="curveMonotoneX"
-            data={tempsData}
-            style={{
-              fill: "none"
-            }}
-            onNearestX={this.handleNearestX}
-          />
-          <Crosshair
-            values={this.state.crosshairValues}
-            titleFormat={titleFormat}
-            itemsFormat={itemsFormat}
-          />
-        </XYPlot>
-        <XYPlot
-          animation
-          className="forecast__chart chart__prob"
-          yDomain={[0, 1]}
-          height={160}
-          width={880}
-          onMouseLeave={this.handleMouseLeave}
-        >
-          <YAxis
-            left={6}
-            tickFormat={v => `${v * 100}%`}
-          />
-          <HorizontalGridLines />
-          <VerticalGridLines tickValues={dayDivsions} />
-          <LineSeries
-            color="grey"
-            opacity={0.4}
-            data={[{ x: currentTime, y: 0 }, { x: currentTime, y: 1 }]}
-          />
-          <AreaSeries
-            data={probNightData}
-            style={{
-              stroke: "none",
-              fill: "rgba(130, 130, 130, 0.1)"
-            }}
-          />
-          <AreaSeries
-            color="blue"
-            curve="curveMonotoneX"
-            data={percipProbData}
-            style={{
-              fill: "rgba(31, 89, 217, 0.5)"
-            }}
-            // onNearestX={this.handleNearestX}
-          />
-          <LineSeries
-            color="green"
-            curve="curveMonotoneX"
-            data={humidityData}
-            style={{
-              fill: "none"
-            }}
-            // onNearestX={this.handleNearestX}
-          />
-          <AreaSeries
-            color="grey"
-            curve="curveMonotoneX"
-            data={cloudCoverData}
-            style={{
-              fill: "rgba(130, 130, 130, 0.2)"
-            }}
-            // onNearestX={this.handleNearestX}
-          />
-          <Crosshair
-            values={this.state.crosshairValues}
-            titleFormat={titleFormat}
-            itemsFormat={itemsFormat}
-          />
-        </XYPlot>
-        <XYPlot
-          animation
-          className="forecast__chart chart__wind"
-          height={120}
-          width={880}
-          onMouseLeave={this.handleMouseLeave}
-        >
-          <YAxis
-            left={6}
-            tickFormat={v => `${v} mph`}
-          />
-          <HorizontalGridLines />
-          <VerticalGridLines tickValues={dayDivsions} />
-          <LineSeries
-            color="grey"
-            opacity={0.4}
-            data={[
-              { x: currentTime, y: windRange.min },
-              { x: currentTime, y: windRange.max }
-            ]}
-          />
-          <AreaSeries
-            data={windNightData}
-            style={{
-              stroke: "none",
-              fill: "rgba(130, 130, 130, 0.1)"
-            }}
-          />
-          <LineSeries
-            color="blue"
-            curve="curveMonotoneX"
-            data={windSpeedData}
-            style={{
-              fill: "none"
-            }}
-            // onNearestX={this.handleNearestX}
-          />
-          <Crosshair
-            values={this.state.crosshairValues}
-            titleFormat={titleFormat}
-            itemsFormat={itemsFormat}
-          />
-        </XYPlot>
+        <TemperaturePlot
+          handleMouseLeave={this.handleMouseLeave}
+          handleNearestX={this.handleNearestX}
+          dayDivsions={dayDivsions}
+          currentTime={currentTime}
+          tempsNightData={tempsNightData}
+          tempsRange={tempsRange}
+          tempsData={tempsData}
+          titleFormat={titleFormat}
+          itemsFormat={itemsFormat}
+          crosshairValues={this.state.crosshairValues}
+        />
+        <ProbabilityPlot
+          handleMouseLeave={this.handleMouseLeave}
+          handleNearestX={this.handleNearestX}
+          dayDivsions={dayDivsions}
+          currentTime={currentTime}
+          probNightData={probNightData}
+          percipProbData={percipProbData}
+          humidityData={humidityData}
+          cloudCoverData={cloudCoverData}
+          titleFormat={titleFormat}
+          itemsFormat={itemsFormat}
+          crosshairValues={this.state.crosshairValues}
+        />
+        <WindSpeedPlot
+          handleMouseLeave={this.handleMouseLeave}
+          handleNearestX={this.handleNearestX}
+          dayDivsions={dayDivsions}
+          currentTime={currentTime}
+          windNightData={windNightData}
+          windRange={windRange}
+          windSpeedData={windSpeedData}
+          titleFormat={titleFormat}
+          itemsFormat={itemsFormat}
+          crosshairValues={this.state.crosshairValues}
+        />
       </div>
     );
   }
