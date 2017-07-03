@@ -5,7 +5,6 @@ const RecentSearches = ({ locations, fetchForecast }) => {
     .sort((a, b) => b.time - a.time)
     .slice(0, 3)
     .map(location => {
-      console.log(location.time, location.address)
       return (
         <button
           key={location.id}
