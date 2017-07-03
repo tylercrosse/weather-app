@@ -1,43 +1,44 @@
-import React from 'react';
-import PlacesAutoComplete from 'react-places-autocomplete';
+import React from "react";
+import PlacesAutoComplete from "react-places-autocomplete";
 
 class Search extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      address: ''
-    }
+      address: ""
+    };
   }
-  handleChange = (address) => {
+  handleChange = address => {
     this.setState({
       address
     });
-  }
-  handleSelect = (address) => {
-    this.props.geocode(address)
+  };
+  handleSelect = address => {
+    this.props.geocode(address);
     this.setState({
-      address: ''
-    })
-  }
+      address: ""
+    });
+  };
   render() {
-    const AutocompleteItem = ({ formattedSuggestion }) => (
+    const AutocompleteItem = ({ formattedSuggestion }) =>
       <div className="search__item">
-        <strong>{formattedSuggestion.mainText}</strong>{' '}
-        <small className="text-muted">{formattedSuggestion.secondaryText}</small>
-      </div>
-    )
+        <strong>{formattedSuggestion.mainText}</strong>{" "}
+        <small className="text-muted">
+          {formattedSuggestion.secondaryText}
+        </small>
+      </div>;
     const cssClasses = {
-      root: 'search__bar',
-      input: 'search__input',
-      autocompleteContainer: 'search__autocomplete_container',
-    }
+      root: "search__bar",
+      input: "search__input",
+      autocompleteContainer: "search__autocomplete_container"
+    };
     const inputProps = {
-      type: 'text',
+      type: "text",
       value: this.state.address,
       onChange: this.handleChange,
       autoFocus: true,
-      placeholder: "Search Places",
-    }
+      placeholder: "Search Places"
+    };
 
     return (
       <div className="search">
@@ -49,7 +50,7 @@ class Search extends React.Component {
           autocompleteItem={AutocompleteItem}
         />
       </div>
-    )
+    );
   }
 }
 

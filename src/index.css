@@ -10,3 +10,7 @@ body {
   font-family: sans-serif;
   background-color: #fcfcfc;
 }
+
+button:focus {
+  outline: 0;
+}

@@ -1,9 +1,9 @@
 import React from "react";
 import moment from "moment";
 import "moment-timezone";
-import TemperaturePlot from "../charts/TemperaturePlot";
-import ProbabilityPlot from "../charts/ProbabilityPlot";
-import WindSpeedPlot from "../charts/WindSpeedPlot";
+import TemperaturePlot from "./TemperaturePlot";
+import ProbabilityPlot from "./ProbabilityPlot";
+import WindSpeedPlot from "./WindSpeedPlot";
 
 /**
  * Get the first non-empty item from an array.
@@ -167,7 +167,7 @@ class Chart extends React.Component {
     const windNightData = selectNightData(hourlyData, dailyData, windRange);
 
     return (
-      <div>
+      <div className="forecast__chart">
         <TemperaturePlot
           crosshairValues={this.state.tempsCrosshairValues}
           handleMouseLeave={this.handleMouseLeave}

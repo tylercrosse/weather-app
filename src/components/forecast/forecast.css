@@ -1,7 +1,9 @@
 .forecast {
+  width: 900px;
+  margin: 0 auto;
 }
 
-.forecast__dayItems {
+.forecast__dayTiles {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -22,14 +24,14 @@
 .chart__wind {
 }
 
-.dayItem {
+.dayTile {
   border-left: 1px solid rgba(208, 208, 208, 0.45);
   text-align: center;
   padding: 0 9px;
-  width: 118px
+  width: 119px;
 }
 
-.dayItem:first-child {
+.dayTile:first-child {
   margin-left: 30px;
   border-left: none;
 }
