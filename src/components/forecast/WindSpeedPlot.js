@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 
-import React from "react";
+import React from 'react';
 import {
   XYPlot,
   YAxis,
@@ -9,7 +9,7 @@ import {
   AreaSeries,
   LineSeries,
   Crosshair
-} from "react-vis";
+} from 'react-vis';
 
 /**
  * Format items for Crosshair.
@@ -19,7 +19,7 @@ import {
 function itemsFormat(values) {
   return values.map((v, i) => {
     if (v) {
-      return { value: `${v.y} mph`, title: "wind speed" };
+      return { value: `${v.y} mph`, title: 'wind speed' };
     }
   });
 }
@@ -47,8 +47,8 @@ const WindSpeedPlot = props => {
       <AreaSeries
         data={props.windNightData}
         style={{
-          stroke: "none",
-          fill: "rgba(130, 130, 130, 0.1)"
+          stroke: 'none',
+          fill: 'rgba(130, 130, 130, 0.1)'
         }}
       />
       <LineSeries
@@ -56,7 +56,7 @@ const WindSpeedPlot = props => {
         curve="curveMonotoneX"
         data={props.windSpeedData}
         style={{
-          fill: "none"
+          fill: 'none'
         }}
         onNearestX={props.handleNearestX}
       />

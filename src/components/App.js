@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { geocode } from "../ducks/locations";
-import { fetchForecast } from "../ducks/weather";
-import RecentSearches from "./RecentSearches";
-import Search from "./Search";
-import CurrentWeather from "./CurrentWeather";
-import DayTiles from "./forecast/DayTiles";
-import Chart from "./forecast/Chart";
-import "./App.css";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { geocode } from '../ducks/locations';
+import { fetchForecast } from '../ducks/weather';
+import RecentSearches from './RecentSearches';
+import Search from './Search';
+import CurrentWeather from './CurrentWeather';
+import DayTiles from './forecast/DayTiles';
+import Chart from './forecast/Chart';
+import './App.css';
 
 class App extends Component {
   render() {

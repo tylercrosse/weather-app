@@ -7,7 +7,7 @@ const path = require('path');
  */
 const serveIndex = (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
-}
+};
 
 module.exports = {
   serveIndex

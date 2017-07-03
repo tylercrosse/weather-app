@@ -1,9 +1,9 @@
-import React from "react";
-import moment from "moment";
-import "moment-timezone";
-import TemperaturePlot from "./TemperaturePlot";
-import ProbabilityPlot from "./ProbabilityPlot";
-import WindSpeedPlot from "./WindSpeedPlot";
+import React from 'react';
+import moment from 'moment';
+import 'moment-timezone';
+import TemperaturePlot from './TemperaturePlot';
+import ProbabilityPlot from './ProbabilityPlot';
+import WindSpeedPlot from './WindSpeedPlot';
 
 /**
  * Get the first non-empty item from an array.
@@ -69,22 +69,22 @@ function selectNightData(hourlyData, dailyData, range) {
     { x: hourlyData[0].time, y: range.min },
     { x: hourlyData[0].time, y: range.max },
     { x: dailyData[0].sunriseTime, y: range.max },
-    { x: dailyData[0].sunriseTime, y: range.min },
+    { x: dailyData[0].sunriseTime, y: range.min }
   ];
   const rightmostRect = [
     { x: dailyData[6].sunsetTime, y: range.min },
     { x: dailyData[6].sunsetTime, y: range.max },
     { x: hourlyData[168].time, y: range.max },
-    { x: hourlyData[168].time, y: range.min },
+    { x: hourlyData[168].time, y: range.min }
   ];
-  const nightData = [leftmostRect, rightmostRect]
+  const nightData = [leftmostRect, rightmostRect];
 
   for (let i = 0; i < 6; i++) {
     let rect = [
-      { x: dailyData[i].sunsetTime, y: range.min},
-      { x: dailyData[i].sunsetTime, y: range.max},
-      { x: dailyData[i+1].sunriseTime, y: range.max},
-      { x: dailyData[i+1].sunriseTime, y: range.min},
+      { x: dailyData[i].sunsetTime, y: range.min },
+      { x: dailyData[i].sunsetTime, y: range.max },
+      { x: dailyData[i + 1].sunriseTime, y: range.max },
+      { x: dailyData[i + 1].sunriseTime, y: range.min }
     ];
     nightData.push(rect);
   }
@@ -111,17 +111,13 @@ class Chart extends React.Component {
   handleNearestX(value, { index }) {
     const hourData = this.hourlyData[index];
     this.setState({
-      tempsCrosshairValues: [
-        {x: value.x, y: hourData.temperature }
-      ],
+      tempsCrosshairValues: [{ x: value.x, y: hourData.temperature }],
       probCrosshairValues: [
-        {x: value.x, y: hourData.cloudCover },
-        {x: value.x, y: hourData.precipProbability },
-        {x: value.x, y: hourData.humidity }
+        { x: value.x, y: hourData.cloudCover },
+        { x: value.x, y: hourData.precipProbability },
+        { x: value.x, y: hourData.humidity }
       ],
-      windCrosshairValues: [
-        {x: value.x, y: hourData.windSpeed }
-      ]
+      windCrosshairValues: [{ x: value.x, y: hourData.windSpeed }]
     });
   }
   handleMouseLeave() {
@@ -141,23 +137,23 @@ class Chart extends React.Component {
 
     if (value) {
       return {
-        title: "time",
-        value: moment.unix(value.x).tz(this.timezone).format("dd h a")
+        title: 'time',
+        value: moment.unix(value.x).tz(this.timezone).format('dd h a')
       };
     }
   }
   render() {
-    const { hourlyData, dailyData, timezone} = this;
+    const { hourlyData, dailyData, timezone } = this;
 
-    const tempsData = selectDataByAttr(hourlyData, "temperature");
-    const cloudCoverData = selectDataByAttr(hourlyData, "cloudCover");
-    const percipProbData = selectDataByAttr(hourlyData, "precipProbability");
-    const humidityData = selectDataByAttr(hourlyData, "humidity");
-    const windSpeedData = selectDataByAttr(hourlyData, "windSpeed");
+    const tempsData = selectDataByAttr(hourlyData, 'temperature');
+    const cloudCoverData = selectDataByAttr(hourlyData, 'cloudCover');
+    const percipProbData = selectDataByAttr(hourlyData, 'precipProbability');
+    const humidityData = selectDataByAttr(hourlyData, 'humidity');
+    const windSpeedData = selectDataByAttr(hourlyData, 'windSpeed');
 
-    const currentTime = moment().tz(timezone).format("X");
+    const currentTime = moment().tz(timezone).format('X');
     const tempsRange = selectRange(tempsData);
-    const probRange = {min: 0, max: 1};
+    const probRange = { min: 0, max: 1 };
     const windRange = selectRange(windSpeedData);
 
     const dayDivsions = selectDayDivisonData(hourlyData);

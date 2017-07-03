@@ -11,14 +11,19 @@ const _ = require('lodash');
  */
 const getForecast = async (req, res) => {
   const currentUnixTime = moment().format('X');
-  const historicURI = `https://api.darksky.net/forecast/1780bf38f274f706e6a341962cfa4f60/${req.params.latlng},${currentUnixTime}?exclude=[currently,minutely,flags]&extend=hourly`;
-  const forecastURI = `https://api.darksky.net/forecast/1780bf38f274f706e6a341962cfa4f60/${req.params.latlng}?exclude=[flags]&extend=hourly`;
+  const historicURI = `https://api.darksky.net/forecast/1780bf38f274f706e6a341962cfa4f60/${req
+    .params
+    .latlng},${currentUnixTime}?exclude=[currently,minutely,flags]&extend=hourly`;
+  const forecastURI = `https://api.darksky.net/forecast/1780bf38f274f706e6a341962cfa4f60/${req
+    .params.latlng}?exclude=[flags]&extend=hourly`;
 
   try {
-    const historicJSON = await fetch(historicURI)
-      .then(response => response.json());
-    const forecastJSON = await fetch(forecastURI)
-      .then(response => response.json());
+    const historicJSON = await fetch(historicURI).then(response =>
+      response.json()
+    );
+    const forecastJSON = await fetch(forecastURI).then(response =>
+      response.json()
+    );
 
     const historicHourly = _.keyBy(historicJSON.hourly.data, 'time');
     const forecastHourly = _.keyBy(forecastJSON.hourly.data, 'time');
@@ -26,10 +31,10 @@ const getForecast = async (req, res) => {
 
     forecastJSON.hourly.data = Object.values(mergedHourly);
 
-    res.json(forecastJSON)
-  } catch(err) {
+    res.json(forecastJSON);
+  } catch (err) {
     // TODO improve error handling (response codes)
-    console.log('❌', error)
+    console.log('❌', error);
   }
 };
 

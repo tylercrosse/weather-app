@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 
-import React from "react";
+import React from 'react';
 import {
   XYPlot,
   YAxis,
@@ -9,7 +9,7 @@ import {
   AreaSeries,
   LineSeries,
   Crosshair
-} from "react-vis";
+} from 'react-vis';
 
 /**
  * Format items for Crosshair.
@@ -19,9 +19,9 @@ import {
 function itemsFormat(values) {
   if (values) {
     return [
-      { value: `${Math.round(values[0].y * 100)}%`, title: "cloud cover" },
-      { value: `${Math.round(values[1].y * 100)}%`, title: "chance of rain" },
-      { value: `${Math.round(values[2].y * 100)}%`, title: "humidity" }
+      { value: `${Math.round(values[0].y * 100)}%`, title: 'cloud cover' },
+      { value: `${Math.round(values[1].y * 100)}%`, title: 'chance of rain' },
+      { value: `${Math.round(values[2].y * 100)}%`, title: 'humidity' }
     ];
   }
 }
@@ -47,8 +47,8 @@ const ProbabilityPlot = props => {
       <AreaSeries
         data={props.probNightData}
         style={{
-          stroke: "none",
-          fill: "rgba(130, 130, 130, 0.1)"
+          stroke: 'none',
+          fill: 'rgba(130, 130, 130, 0.1)'
         }}
       />
       <AreaSeries
@@ -56,7 +56,7 @@ const ProbabilityPlot = props => {
         curve="curveMonotoneX"
         data={props.percipProbData}
         style={{
-          fill: "rgba(31, 89, 217, 0.5)"
+          fill: 'rgba(31, 89, 217, 0.5)'
         }}
       />
       <LineSeries
@@ -64,7 +64,7 @@ const ProbabilityPlot = props => {
         curve="curveMonotoneX"
         data={props.humidityData}
         style={{
-          fill: "none"
+          fill: 'none'
         }}
       />
       <AreaSeries
@@ -72,7 +72,7 @@ const ProbabilityPlot = props => {
         curve="curveMonotoneX"
         data={props.cloudCoverData}
         style={{
-          fill: "rgba(130, 130, 130, 0.2)"
+          fill: 'rgba(130, 130, 130, 0.2)'
         }}
         onNearestX={props.handleNearestX}
       />

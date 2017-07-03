@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import moment from 'moment';
-import "moment-timezone";
-import './forecast.css'
+import 'moment-timezone';
+import './forecast.css';
 
 const DayTile = ({ day, timezone }) => {
-  const time = moment.unix(day.time).tz(timezone).format('ddd D')
+  const time = moment.unix(day.time).tz(timezone).format('ddd D');
   return (
     <div className="dayTile">
       <div>{time}</div>
@@ -13,8 +13,8 @@ const DayTile = ({ day, timezone }) => {
       </div>
       <img src={`../../${day.icon}.svg`} alt={day.icon} />
     </div>
-  )
-}
+  );
+};
 
 const DayTiles = ({ weather }) => {
   const { timezone } = weather;

@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 
 class RecentSearches extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       showRecent: false
-    }
+    };
   }
-  handleClick = (location) => {
-    this.props.fetchForecast(location)
+  handleClick = location => {
+    this.props.fetchForecast(location);
     this.setState({
       showRecent: false
-    })
-  }
+    });
+  };
   toggleRecent = () => {
     this.setState({
       showRecent: !this.state.showRecent
-    })
-  }
+    });
+  };
   render() {
     const { locations } = this.props;
     const recentSearchItems = Object.values(locations)
@@ -37,8 +37,8 @@ class RecentSearches extends React.Component {
     return (
       <div className="recentSearches">
         <div>
-          <button className="recentSearches__btn" onClick={this.toggleRecent} >
-            {this.state.showRecent ? "Hide Recent" : "Show Recent Locations"}
+          <button className="recentSearches__btn" onClick={this.toggleRecent}>
+            {this.state.showRecent ? 'Hide Recent' : 'Show Recent Locations'}
           </button>
         </div>
         {this.state.showRecent && recentSearchItems}

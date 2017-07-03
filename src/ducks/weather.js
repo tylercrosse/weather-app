@@ -1,18 +1,18 @@
 // actions
-export const FORECAST_REQUEST = "FORECAST_REQUEST";
-export const FORECAST_SUCCESS = "FORECAST_SUCCESS";
-export const FORECAST_FAILURE = "FORECAST_FAILURE";
+export const FORECAST_REQUEST = 'FORECAST_REQUEST';
+export const FORECAST_SUCCESS = 'FORECAST_SUCCESS';
+export const FORECAST_FAILURE = 'FORECAST_FAILURE';
 
 // action creators
 export const fetchForecast = ({ lat, lng, address }) => dispatch => {
-  const uri = `/api/forecast/${lat},${lng}`
+  const uri = `/api/forecast/${lat},${lng}`;
 
   dispatch({ type: FORECAST_REQUEST });
 
   fetch(uri)
     .then(response => response.json())
     .then(json => {
-      console.log("Success Yay", json);
+      console.log('Success Yay', json);
       dispatch({
         type: FORECAST_SUCCESS,
         payload: {
@@ -22,7 +22,7 @@ export const fetchForecast = ({ lat, lng, address }) => dispatch => {
       });
     })
     .catch(error => {
-      console.log("Oh no!", error);
+      console.log('Oh no!', error);
       dispatch({
         type: FORECAST_FAILURE,
         payload: error
