@@ -76,7 +76,7 @@ WindSpeedPlot.propTypes = {
   handleNearestX: PropTypes.func.isRequired,
   dayDivsions: PropTypes.array.isRequired,
   titleFormat: PropTypes.func.isRequired,
-  currentTime: PropTypes.string.isRequired,
+  currentTime: PropTypes.number.isRequired,
   windSpeedData: PropTypes.array.isRequired,
   windNightData: PropTypes.array.isRequired,
   windRange: PropTypes.object.isRequired,

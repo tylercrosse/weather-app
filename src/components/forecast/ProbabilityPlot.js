@@ -92,7 +92,7 @@ ProbabilityPlot.propTypes = {
   handleNearestX: PropTypes.func.isRequired,
   dayDivsions: PropTypes.array.isRequired,
   titleFormat: PropTypes.func.isRequired,
-  currentTime: PropTypes.string.isRequired,
+  currentTime: PropTypes.number.isRequired,
   probNightData: PropTypes.array.isRequired,
   percipProbData: PropTypes.array.isRequired,
   humidityData: PropTypes.array.isRequired,

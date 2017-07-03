@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProbabilityPlot /> should render correctly 1`] = `
+<XYPlot
+  animation={true}
+  className="forecast__chart chart__prob"
+  height={160}
+  onMouseLeave={[Function]}
+  width={880}
+  yDomain={
+    Array [
+      0,
+      1,
+    ]
+  }
+>
+  <YAxis
+    attr="y"
+    hideLine={true}
+    left={6}
+    orientation="left"
+    tickFormat={[Function]}
+  />
+  <HorizontalGridLines
+    attr="y"
+    direction="horizontal"
+  />
+  <VerticalGridLines
+    attr="x"
+    direction="vertical"
+    tickValues={Array []}
+  />
+  <LineSeries
+    color="grey"
+    curve={null}
+    data={
+      Array [
+        Object {
+          "x": 1499105000,
+          "y": 0,
+        },
+        Object {
+          "x": 1499105000,
+          "y": 1,
+        },
+      ]
+    }
+    opacity={0.4}
+    strokeStyle="solid"
+    style={Object {}}
+  />
+  <AreaSeries
+    className=""
+    data={Array []}
+    style={
+      Object {
+        "fill": "rgba(130, 130, 130, 0.1)",
+        "stroke": "none",
+      }
+    }
+  />
+  <AreaSeries
+    className=""
+    color="blue"
+    curve="curveMonotoneX"
+    data={Array []}
+    style={
+      Object {
+        "fill": "rgba(31, 89, 217, 0.5)",
+      }
+    }
+  />
+  <LineSeries
+    color="green"
+    curve="curveMonotoneX"
+    data={Array []}
+    opacity={1}
+    strokeStyle="solid"
+    style={
+      Object {
+        "fill": "none",
+      }
+    }
+  />
+  <AreaSeries
+    className=""
+    color="grey"
+    curve="curveMonotoneX"
+    data={Array []}
+    onNearestX={[Function]}
+    style={
+      Object {
+        "fill": "rgba(130, 130, 130, 0.2)",
+      }
+    }
+  />
+  <Crosshair
+    itemsFormat={[Function]}
+    titleFormat={[Function]}
+    values={Array []}
+  />
+</XYPlot>
+`;

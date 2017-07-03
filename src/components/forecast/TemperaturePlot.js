@@ -76,7 +76,7 @@ TemperaturePlot.propTypes = {
   handleNearestX: PropTypes.func.isRequired,
   dayDivsions: PropTypes.array.isRequired,
   titleFormat: PropTypes.func.isRequired,
-  currentTime: PropTypes.string.isRequired,
+  currentTime: PropTypes.number.isRequired,
   tempsData: PropTypes.array.isRequired,
   tempsNightData: PropTypes.array.isRequired,
   tempsRange: PropTypes.object.isRequired,

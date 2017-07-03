@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WindSpeedPlot /> should render correctly 1`] = `
+<XYPlot
+  animation={true}
+  className="forecast__chart chart__wind"
+  height={120}
+  onMouseLeave={[Function]}
+  width={880}
+>
+  <YAxis
+    attr="y"
+    hideLine={true}
+    left={6}
+    orientation="left"
+    tickFormat={[Function]}
+  />
+  <HorizontalGridLines
+    attr="y"
+    direction="horizontal"
+  />
+  <VerticalGridLines
+    attr="x"
+    direction="vertical"
+    tickValues={Array []}
+  />
+  <LineSeries
+    color="grey"
+    curve={null}
+    data={
+      Array [
+        Object {
+          "x": 1499105000,
+          "y": undefined,
+        },
+        Object {
+          "x": 1499105000,
+          "y": undefined,
+        },
+      ]
+    }
+    opacity={0.4}
+    strokeStyle="solid"
+    style={Object {}}
+  />
+  <AreaSeries
+    className=""
+    data={Array []}
+    style={
+      Object {
+        "fill": "rgba(130, 130, 130, 0.1)",
+        "stroke": "none",
+      }
+    }
+  />
+  <LineSeries
+    color="blue"
+    curve="curveMonotoneX"
+    data={Array []}
+    onNearestX={[Function]}
+    opacity={1}
+    strokeStyle="solid"
+    style={
+      Object {
+        "fill": "none",
+      }
+    }
+  />
+  <Crosshair
+    itemsFormat={[Function]}
+    titleFormat={[Function]}
+    values={Array []}
+  />
+</XYPlot>
+`;

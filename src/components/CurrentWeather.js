@@ -12,7 +12,13 @@ const CurrentWeather = ({ weather }) =>
   </div>;
 
 CurrentWeather.propTypes = {
-  weather: PropTypes.object.isRequired,
+  weather: PropTypes.shape({
+    address: PropTypes.string.isRequired,
+    currently: PropTypes.shape({
+      temperature: PropTypes.number.isRequired,
+      icon: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
 }
 
 export default CurrentWeather;

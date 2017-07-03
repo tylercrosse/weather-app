@@ -144,7 +144,7 @@ class Chart extends React.Component {
     }
   }
   render() {
-    const { hourlyData, dailyData, timezone } = this;
+    const { hourlyData, dailyData } = this;
 
     const tempsData = selectDataByAttr(hourlyData, 'temperature');
     const cloudCoverData = selectDataByAttr(hourlyData, 'cloudCover');
@@ -152,7 +152,8 @@ class Chart extends React.Component {
     const humidityData = selectDataByAttr(hourlyData, 'humidity');
     const windSpeedData = selectDataByAttr(hourlyData, 'windSpeed');
 
-    const currentTime = moment().tz(timezone).format('X');
+    // const currentTime = moment().tz(timezone).format('X');
+    const currentTime = this.props.weather.currently.time;
     const tempsRange = selectRange(tempsData);
     const probRange = { min: 0, max: 1 };
     const windRange = selectRange(windSpeedData);

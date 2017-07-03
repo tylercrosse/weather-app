@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search /> should render correctly 1`] = `
+<div
+  className="search"
+>
+  <PlacesAutocomplete
+    autocompleteItem={[Function]}
+    classNames={
+      Object {
+        "autocompleteContainer": "search__autocomplete_container",
+        "input": "search__input",
+        "root": "search__bar",
+      }
+    }
+    clearItemsOnError={false}
+    debounce={200}
+    highlightFirstSuggestion={false}
+    inputProps={
+      Object {
+        "autoFocus": true,
+        "onChange": [Function],
+        "placeholder": "Search Places",
+        "type": "text",
+        "value": "",
+      }
+    }
+    onEnterKeyDown={[Function]}
+    onError={[Function]}
+    onSelect={[Function]}
+    options={Object {}}
+    styles={Object {}}
+  />
+</div>
+`;

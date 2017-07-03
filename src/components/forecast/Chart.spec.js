@@ -1,15 +1,15 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from "react";
+import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
-import { Chart } from './Chart';
+// import moment from 'moment';
+import Chart from "./Chart";
+import weatherJSON from "../../../test/weatherData.json";
+
 
 const setup = () => {
   const props = {
-    // locations: {},
-    // weather: {},
-    // geocode: jest.fn(),
-    // fetchForecast: jest.fn(),
-  }
+    ...weatherJSON
+  };
 
   const component = <Chart {...props} />;
   const wrapper = shallow(component);
@@ -17,12 +17,12 @@ const setup = () => {
   return {
     props,
     wrapper
-  }
-}
+  };
+};
 
-describe('<Chart />', () => {
-  xit('should render correctly', () => {
+describe("<Chart />", () => {
+  it("should render correctly", () => {
     const { wrapper } = setup();
     expect(toJson(wrapper)).toMatchSnapshot();
   });
-})
+});

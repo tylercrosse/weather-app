@@ -1,14 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from "enzyme-to-json";
-import { Search } from './Search';
+import Search from './Search';
 
 const setup = () => {
   const props = {
-    // locations: {},
-    // weather: {},
-    // geocode: jest.fn(),
-    // fetchForecast: jest.fn(),
+    geocode: jest.fn(),
   }
 
   const component = <Search {...props} />;
@@ -21,7 +18,7 @@ const setup = () => {
 }
 
 describe('<Search />', () => {
-  xit('should render correctly', () => {
+  it('should render correctly', () => {
     const { wrapper } = setup();
     expect(toJson(wrapper)).toMatchSnapshot();
   });
