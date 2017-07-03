@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+
 import React from "react";
 import {
   XYPlot,
@@ -8,6 +10,19 @@ import {
   LineSeries,
   Crosshair
 } from "react-vis";
+
+/**
+ * Format items for Crosshair.
+ * @param {Array} values Array of values.
+ * @returns {*} Formatted list of items.
+ */
+function itemsFormat(values) {
+  return values.map((v, i) => {
+    if (v) {
+      return { value: `${v.y} mph`, title: "wind speed" };
+    }
+  });
+}
 
 const WindSpeedPlot = props => {
   return (
@@ -43,12 +58,12 @@ const WindSpeedPlot = props => {
         style={{
           fill: "none"
         }}
-        // onNearestX={props.handleNearestX}
+        onNearestX={props.handleNearestX}
       />
       <Crosshair
         values={props.crosshairValues}
         titleFormat={props.titleFormat}
-        itemsFormat={props.itemsFormat}
+        itemsFormat={itemsFormat}
       />
     </XYPlot>
   );

@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+
 import React from "react";
 import {
   XYPlot,
@@ -8,6 +10,21 @@ import {
   LineSeries,
   Crosshair
 } from "react-vis";
+
+/**
+ * Format items for Crosshair.
+ * @param {Array} values Array of values.
+ * @returns {*} Formatted list of items.
+ */
+function itemsFormat(values) {
+  if (values) {
+    return [
+      { value: `${Math.round(values[0].y * 100)}%`, title: "cloud cover" },
+      { value: `${Math.round(values[1].y * 100)}%`, title: "chance of rain" },
+      { value: `${Math.round(values[2].y * 100)}%`, title: "humidity" }
+    ];
+  }
+}
 
 const ProbabilityPlot = props => {
   return (
@@ -41,7 +58,6 @@ const ProbabilityPlot = props => {
         style={{
           fill: "rgba(31, 89, 217, 0.5)"
         }}
-        // onNearestX={props.handleNearestX}
       />
       <LineSeries
         color="green"
@@ -50,7 +66,6 @@ const ProbabilityPlot = props => {
         style={{
           fill: "none"
         }}
-        // onNearestX={props.handleNearestX}
       />
       <AreaSeries
         color="grey"
@@ -59,12 +74,12 @@ const ProbabilityPlot = props => {
         style={{
           fill: "rgba(130, 130, 130, 0.2)"
         }}
-        // onNearestX={props.handleNearestX}
+        onNearestX={props.handleNearestX}
       />
       <Crosshair
         values={props.crosshairValues}
         titleFormat={props.titleFormat}
-        itemsFormat={props.itemsFormat}
+        itemsFormat={itemsFormat}
       />
     </XYPlot>
   );
