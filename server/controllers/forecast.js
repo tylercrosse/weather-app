@@ -34,7 +34,7 @@ const getForecast = async (req, res) => {
     res.json(forecastJSON);
   } catch (err) {
     // TODO improve error handling (response codes)
-    console.log('❌', error);
+    console.log('❌', err);
   }
 };
 

@@ -9,7 +9,7 @@ import DayTiles from './forecast/DayTiles';
 import Chart from './forecast/Chart';
 import './App.css';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <div className="App">
