@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PlacesAutoComplete from 'react-places-autocomplete';
 
 class Search extends React.Component {
@@ -52,6 +53,10 @@ class Search extends React.Component {
       </div>
     );
   }
+}
+
+Search.propTypes = {
+  geocode: PropTypes.func.isRequired,
 }
 
 export default Search;

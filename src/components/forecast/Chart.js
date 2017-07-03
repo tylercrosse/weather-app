@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import 'moment-timezone';
 import TemperaturePlot from './TemperaturePlot';
@@ -201,6 +202,10 @@ class Chart extends React.Component {
       </div>
     );
   }
+}
+
+Chart.propTypes = {
+  weather: PropTypes.object.isRequired,
 }
 
 export default Chart;

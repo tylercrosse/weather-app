@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { geocode } from '../ducks/locations';
 import { fetchForecast } from '../ducks/weather';
@@ -32,6 +33,13 @@ export class App extends Component {
       </div>
     );
   }
+}
+
+App.propTypes = {
+  locations: PropTypes.object.isRequired,
+  weather: PropTypes.object.isRequired,
+  geocode: PropTypes.func.isRequired,
+  fetchForecast: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({

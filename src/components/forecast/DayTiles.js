@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import 'moment-timezone';
 import './forecast.css';
@@ -16,6 +17,11 @@ const DayTile = ({ day, timezone }) => {
   );
 };
 
+DayTile.propTypes = {
+  day: PropTypes.object.isRequired,
+  timezone: PropTypes.string.isRequired,
+}
+
 const DayTiles = ({ weather }) => {
   const { timezone } = weather;
   const dayTiles = weather.daily.data
@@ -28,5 +34,9 @@ const DayTiles = ({ weather }) => {
     </div>
   );
 };
+
+DayTiles.propTypes = {
+  weather: PropTypes.object.isRequired,
+}
 
 export default DayTiles;

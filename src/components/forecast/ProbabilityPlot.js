@@ -1,6 +1,7 @@
 /* eslint-disable array-callback-return */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   XYPlot,
   YAxis,
@@ -84,5 +85,18 @@ const ProbabilityPlot = props => {
     </XYPlot>
   );
 };
+
+ProbabilityPlot.propTypes = {
+  crosshairValues: PropTypes.array.isRequired,
+  handleMouseLeave: PropTypes.func.isRequired,
+  handleNearestX: PropTypes.func.isRequired,
+  dayDivsions: PropTypes.array.isRequired,
+  titleFormat: PropTypes.func.isRequired,
+  currentTime: PropTypes.string.isRequired,
+  probNightData: PropTypes.array.isRequired,
+  percipProbData: PropTypes.array.isRequired,
+  humidityData: PropTypes.array.isRequired,
+  cloudCoverData: PropTypes.array.isRequired,
+}
 
 export default ProbabilityPlot;

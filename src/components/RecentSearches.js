@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class RecentSearches extends React.Component {
   constructor(props) {
@@ -45,6 +46,11 @@ class RecentSearches extends React.Component {
       </div>
     );
   }
+}
+
+RecentSearches.propTypes = {
+  locations: PropTypes.object.isRequired,
+  fetchForecast: PropTypes.func.isRequired,
 }
 
 export default RecentSearches;

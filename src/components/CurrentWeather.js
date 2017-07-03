@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CurrentWeather = ({ weather }) =>
   <div className="currentWeather">
@@ -9,5 +10,9 @@ const CurrentWeather = ({ weather }) =>
       alt={weather.currently.icon}
     />
   </div>;
+
+CurrentWeather.propTypes = {
+  weather: PropTypes.object.isRequired,
+}
 
 export default CurrentWeather;

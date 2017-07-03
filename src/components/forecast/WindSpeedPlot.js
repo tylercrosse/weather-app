@@ -1,6 +1,7 @@
 /* eslint-disable array-callback-return */
 
 import React from 'react';
+import PropTypes from 'prop-types'
 import {
   XYPlot,
   YAxis,
@@ -68,5 +69,17 @@ const WindSpeedPlot = props => {
     </XYPlot>
   );
 };
+
+WindSpeedPlot.propTypes = {
+  crosshairValues: PropTypes.array.isRequired,
+  handleMouseLeave: PropTypes.func.isRequired,
+  handleNearestX: PropTypes.func.isRequired,
+  dayDivsions: PropTypes.array.isRequired,
+  titleFormat: PropTypes.func.isRequired,
+  currentTime: PropTypes.string.isRequired,
+  windSpeedData: PropTypes.array.isRequired,
+  windNightData: PropTypes.array.isRequired,
+  windRange: PropTypes.object.isRequired,
+}
 
 export default WindSpeedPlot;
