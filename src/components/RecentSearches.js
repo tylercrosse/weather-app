@@ -7,14 +7,16 @@ class RecentSearches extends React.Component {
     this.state = {
       showRecent: false
     };
+    this.handleClick = this.handleClick.bind(this);
+    this.toggleRecent = this.toggleRecent.bind(this);
   }
-  handleClick = location => {
+  handleClick(location) {
     this.props.fetchForecast(location);
     this.setState({
       showRecent: false
     });
   };
-  toggleRecent = () => {
+  toggleRecent() {
     this.setState({
       showRecent: !this.state.showRecent
     });
@@ -38,7 +40,7 @@ class RecentSearches extends React.Component {
     return (
       <div className="recentSearches">
         <div>
-          <button className="recentSearches__btn" onClick={this.toggleRecent}>
+          <button className="recentSearches__btn" onClick={() => this.toggleRecent()}>
             {this.state.showRecent ? 'Hide Recent' : 'Show Recent Locations'}
           </button>
         </div>

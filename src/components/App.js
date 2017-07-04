@@ -42,7 +42,7 @@ App.propTypes = {
   fetchForecast: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   locations: state.locations,
   weather: state.weather
 });
