@@ -44,6 +44,15 @@ const TemperaturePlot = props => {
           fill: 'rgba(130, 130, 130, 0.1)'
         }}
       />
+      <AreaSeries
+        color="#FC0F45"
+        curve="curveMonotoneX"
+        data={props.tempsData}
+        style={{
+          // fill: 'none'
+        }}
+        onNearestX={props.handleNearestX}
+      />
       <LineSeries
         color="grey"
         opacity={0.4}
@@ -51,15 +60,6 @@ const TemperaturePlot = props => {
           { x: props.currentTime, y: props.tempsRange.min },
           { x: props.currentTime, y: props.tempsRange.max }
         ]}
-      />
-      <LineSeries
-        color="red"
-        curve="curveMonotoneX"
-        data={props.tempsData}
-        style={{
-          fill: 'none'
-        }}
-        onNearestX={props.handleNearestX}
       />
       <Crosshair
         values={props.crosshairValues}

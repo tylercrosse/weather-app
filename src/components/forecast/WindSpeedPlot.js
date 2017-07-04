@@ -53,7 +53,7 @@ const WindSpeedPlot = props => {
         }}
       />
       <LineSeries
-        color="blue"
+        color="#1923FA"
         curve="curveMonotoneX"
         data={props.windSpeedData}
         style={{

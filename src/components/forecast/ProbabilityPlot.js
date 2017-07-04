@@ -53,19 +53,11 @@ const ProbabilityPlot = props => {
         }}
       />
       <AreaSeries
-        color="blue"
+        color="rgb(25, 35, 250)"
         curve="curveMonotoneX"
         data={props.percipProbData}
         style={{
-          fill: 'rgba(31, 89, 217, 0.5)'
-        }}
-      />
-      <LineSeries
-        color="green"
-        curve="curveMonotoneX"
-        data={props.humidityData}
-        style={{
-          fill: 'none'
+          fill: 'rgba(25, 35, 250, 0.5)'
         }}
       />
       <AreaSeries
@@ -76,6 +68,14 @@ const ProbabilityPlot = props => {
           fill: 'rgba(130, 130, 130, 0.2)'
         }}
         onNearestX={props.handleNearestX}
+      />
+      <LineSeries
+        color="#2BEEA3"
+        curve="curveMonotoneX"
+        data={props.humidityData}
+        style={{
+          fill: 'none'
+        }}
       />
       <Crosshair
         values={props.crosshairValues}

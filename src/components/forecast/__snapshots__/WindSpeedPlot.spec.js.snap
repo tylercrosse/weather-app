@@ -54,7 +54,7 @@ exports[`<WindSpeedPlot /> should render correctly 1`] = `
     }
   />
   <LineSeries
-    color="blue"
+    color="#1923FA"
     curve="curveMonotoneX"
     data={Array []}
     onNearestX={[Function]}

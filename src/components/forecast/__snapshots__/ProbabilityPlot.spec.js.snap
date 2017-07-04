@@ -61,7 +61,7 @@ exports[`<ProbabilityPlot /> should render correctly 1`] = `
   />
   <AreaSeries
     className=""
-    color="blue"
+    color="#1923FA"
     curve="curveMonotoneX"
     data={Array []}
     style={
@@ -71,7 +71,7 @@ exports[`<ProbabilityPlot /> should render correctly 1`] = `
     }
   />
   <LineSeries
-    color="green"
+    color="#2BEEA3"
     curve="curveMonotoneX"
     data={Array []}
     opacity={1}

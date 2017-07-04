@@ -15,13 +15,13 @@ export class App extends Component {
     return (
       <div className="App">
         <section className="current">
+          <Search geocode={this.props.geocode} />
           {Object.keys(this.props.locations).length !== 0 &&
             this.props.locations.constructor === Object &&
             <RecentSearches
               locations={this.props.locations}
               fetchForecast={this.props.fetchForecast}
             />}
-          <Search geocode={this.props.geocode} />
           {this.props.weather.currently &&
             <CurrentWeather weather={this.props.weather} />}
         </section>

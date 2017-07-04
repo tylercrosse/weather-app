@@ -1,16 +1,17 @@
 .forecast {
-  width: 900px;
+  width: 880px;
   margin: 0 auto;
+  padding: 30px 0 0;
 }
 
 .forecast__dayTiles {
   width: 100%;
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
 }
 
 .forecast__chart {
-  margin: 0 auto;
+  /*margin: 0 auto;*/
 }
 
 .chart__temps {
@@ -32,7 +33,7 @@
 }
 
 .dayTile:first-child {
-  margin-left: 30px;
+  margin-left: 39px;
   border-left: none;
 }
 
@@ -111,7 +112,7 @@
 }
 
 .rv-crosshair__line {
-  background: #f5d73b;
+  background: #0A0023;
   width: 1.5px;
 }
 
@@ -123,8 +124,8 @@
 
 .rv-crosshair__inner__content {
   border-radius: 4px;
-  background: rgb(71, 71, 71);
-  color: rgb(255, 255, 255);
+  background: white;
+  color: #0A0023;
   font-size: 12px;
   padding: 7px 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
