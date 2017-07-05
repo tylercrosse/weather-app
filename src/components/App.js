@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { geocode } from "../ducks/locations";
 import { fetchForecast } from "../ducks/weather";
+import { showSearch } from "../ducks/ui";
 import RecentSearches from "./RecentSearches";
 import Search from "./Search";
 import CurrentWeather from "./current/CurrentWeather";
@@ -17,6 +18,8 @@ export class App extends Component {
         <section className="current">
           {this.props.weather.currently
             ? <CurrentWeather
+                showSearch={this.props.showSearch}
+                ui={this.props.ui}
                 weather={this.props.weather}
                 geocode={this.props.geocode}
               />
@@ -40,8 +43,12 @@ App.propTypes = {
 };
 
 export const mapStateToProps = state => ({
+  ui: state.ui,
   locations: state.locations,
   weather: state.weather
 });
 
-export default connect(mapStateToProps, { geocode, fetchForecast })(App);
+export default connect(
+  mapStateToProps,
+  { geocode, fetchForecast, showSearch }
+)(App);

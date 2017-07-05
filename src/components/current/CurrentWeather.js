@@ -7,15 +7,11 @@ import "./current.css";
 class CurrentWeather extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showSearch: false
-    };
+
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
-    this.setState({
-      showSearch: true
-    })
+    this.props.showSearch();
   }
   renderBackground() {
     const icon = this.props.weather.currently.icon;
@@ -67,7 +63,7 @@ class CurrentWeather extends React.Component {
             </p>
           </div>
           <div className="currentWeather__location">
-            {this.state.showSearch
+            {this.props.ui.shouldShowSearch
               ? <Search geocode={this.props.geocode} />
               : <button className="location__btn" onClick={this.handleClick}>
                   <h3>{weather.address}</h3>
@@ -87,7 +83,9 @@ CurrentWeather.propTypes = {
       icon: PropTypes.string.isRequired
     })
   }).isRequired,
-  geocode: PropTypes.func.isRequired
+  geocode: PropTypes.func.isRequired,
+  showSearch: PropTypes.func.isRequired,
+  ui: PropTypes.object.isRequired
 };
 
 export default CurrentWeather;
