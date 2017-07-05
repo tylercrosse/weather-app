@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlacesAutoComplete from 'react-places-autocomplete';
 
-class Search extends React.Component {
+class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,8 +57,8 @@ class Search extends React.Component {
   }
 }
 
-Search.propTypes = {
+SearchBar.propTypes = {
   geocode: PropTypes.func.isRequired,
 }
 
-export default Search;
+export default SearchBar;

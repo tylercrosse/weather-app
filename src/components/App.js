@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { geocode } from "../ducks/locations";
 import { fetchForecast } from "../ducks/weather";
-import { showSearch } from "../ducks/ui";
-import Search from "./Search";
+import { showSearch, hideSearch } from "../ducks/ui";
+import SearchBar from "./SearchBar";
 import CurrentWeather from "./current/CurrentWeather";
 import DayTiles from "./forecast/DayTiles";
 import Chart from "./forecast/Chart";
@@ -14,18 +14,19 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        <section className="current">
-          {this.props.weather.currently
-            ? <CurrentWeather
-                showSearch={this.props.showSearch}
-                ui={this.props.ui}
-                weather={this.props.weather}
-                geocode={this.props.geocode}
-              />
-            : <div className="search-no_current">
-                <Search geocode={this.props.geocode} />
-              </div>}
-        </section>
+        {this.props.weather.currently
+          ? <CurrentWeather
+              showSearch={this.props.showSearch}
+              hideSearch={this.props.hideSearch}
+              ui={this.props.ui}
+              locations={this.props.locations}
+              weather={this.props.weather}
+              geocode={this.props.geocode}
+              fetchForecast={this.props.fetchForecast}
+            />
+          : <div className="search-no_current">
+              <SearchBar geocode={this.props.geocode} />
+            </div>}
         {this.props.weather.daily &&
           <section className="forecast">
             <DayTiles weather={this.props.weather} />
@@ -49,6 +50,6 @@ export const mapStateToProps = state => ({
   weather: state.weather
 });
 
-export default connect(mapStateToProps, { geocode, fetchForecast, showSearch })(
+export default connect(mapStateToProps, { geocode, fetchForecast, showSearch, hideSearch })(
   App
 );

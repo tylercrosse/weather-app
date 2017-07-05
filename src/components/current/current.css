@@ -1,19 +1,33 @@
 .recentSearches {
-  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
   text-align: center;
 }
 
-.recentSearches__btn {
-  background-color: #fcfcfc;
-  border: 0;
-}
-
 .recentSearch__item {
-  background-color: #fcfcfc;
+  display: flex;
+  align-items: center;
+  height: 1.4em;
+  font-weight: 300;
+  color: inherit;
+  background-color: inherit;
   border: 0;
   margin: 0 20px;
   padding: 20px;
   cursor: pointer;
+}
+
+.recentSearch__item svg {
+  display: inline-block;
+  height: 1.4em;
+  margin-right: 12px;
+  padding: 3px;
+}
+
+.recentSearch__item p {
+  margin: 0;
+  display: inline-block;
 }
 
 .search {
@@ -64,7 +78,7 @@
 
 .current {
   color: #555555;
-  fill: #555555;
+  /*fill: #555555;*/
 }
 
 .currentWeather {
@@ -78,8 +92,8 @@
   top: 0;
   left: 0;
   right: 0;
-  width: 700px;
-  margin: 40px auto;
+  width: 760px;
+  margin: 30px auto;
   z-index: 2;
 }
 
@@ -96,9 +110,6 @@
 .currentWeather__summary p {
   font-size: 1.4em;
   margin: 0;
-}
-
-.currentWeather__location {
 }
 
 .location__btn {
@@ -130,7 +141,7 @@
 }
 
 .clear-night,
-.partly-clody-night {
+.partly-cloudy-night {
   background-color: rgb(108, 100, 112);
 }
 
@@ -165,7 +176,7 @@ clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sle
 }
 
 .partly-cloudy-day .cloud__back,
-.partly-clody-night .cloud__back {
+.partly-cloudy-night .cloud__back {
   fill: #ccd9dd;
 }
 
@@ -181,7 +192,7 @@ clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sle
 }
 
 .partly-cloudy-day .cloud__middle,
-.partly-clody-night .cloud__middle {
+.partly-cloudy-night .cloud__middle {
   fill: #d7e4e9;
 }
 
@@ -197,7 +208,7 @@ clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sle
 }
 
 .partly-cloudy-day .cloud__front,
-.partly-clody-night .cloud__front {
+.partly-cloudy-night .cloud__front {
   fill: #e9f6f6;
 }
 

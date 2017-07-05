@@ -9,7 +9,7 @@ import './normalize.css';
 import './index.css';
 
 const store = configureStore();
-persistStore(store).purge();
+persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>

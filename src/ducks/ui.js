@@ -1,3 +1,4 @@
+import { GEOLOCATION_SUCCESS } from './locations';
 import { FORECAST_SUCCESS } from './weather';
 
 // actions
@@ -22,6 +23,7 @@ const ui = (state = iniitialUiState, action) => {
   switch (action.type) {
     case SHOW_SEARCH:
       return { shouldShowSearch: true };
+    case GEOLOCATION_SUCCESS:
     case FORECAST_SUCCESS:
     case HIDE_SEARCH:
       return { shouldShowSearch: false };

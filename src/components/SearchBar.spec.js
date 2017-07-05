@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from "enzyme-to-json";
-import Search from './Search';
+import SearchBar from './SearchBar';
 
 const setup = () => {
   const props = {
     geocode: jest.fn(),
   }
 
-  const component = <Search {...props} />;
+  const component = <SearchBar {...props} />;
   const wrapper = shallow(component);
 
   return {
@@ -17,7 +17,7 @@ const setup = () => {
   }
 }
 
-describe('<Search />', () => {
+describe('<SearchBar />', () => {
   it('should render correctly', () => {
     const { wrapper } = setup();
     expect(toJson(wrapper)).toMatchSnapshot();
