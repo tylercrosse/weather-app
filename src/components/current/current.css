@@ -1,0 +1,159 @@
+.current {
+  color: #888888;
+}
+
+.currentWeather {
+  height: 500px;
+}
+
+.currentWeather__info {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 700px;
+  margin: 40px auto;
+  z-index: 2;
+}
+
+.currentWeather__summary {
+  margin-right: 40px;
+}
+
+.currentWeather__summary h1 {
+  margin: 0;
+  font-weight: 300;
+  font-size: 6em;
+}
+
+.currentWeather__summary p {
+  font-size: 1.4em;
+  margin: 0;
+}
+
+.currentWeather__location {
+}
+
+.location__btn {
+  align-self: flex-end;
+  cursor: pointer;
+  width: 100%;
+  border: 0;
+  background: none;
+}
+
+.clear-day,
+.partly-cloudy-day {
+  background-color: rgb(128, 204, 228);
+}
+
+.clear-night,
+.partly-clody-night {
+  background-color: rgb(108, 100, 112);
+}
+
+.cloudy,
+.rain,
+.sleet {
+  background-color: #c5c8cd;
+  color: #dddddd;
+}
+
+.fog,
+.snow {
+  background-color: #e9e9e9;
+}
+
+.clouds {
+  position: relative;
+  z-index: 1;
+}
+
+.cloud {
+  height: 150px;
+  width: 3000px;
+}
+
+/*
+clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sleet snow
+ */
+
+
+
+.fog .cloud__back {
+  fill: #b8b7bd;
+}
+
+.partly-cloudy-day .cloud__back,
+.partly-clody-night .cloud__back {
+  fill: #ccd9dd;
+}
+
+.cloudy .cloud__back,
+.rain .cloud__back,
+.sleet .cloud__back,
+.snow .cloud__back {
+  fill: #7b7988;
+}
+
+.fog .cloud__middle {
+  fill: #c9dde4;
+}
+
+.partly-cloudy-day .cloud__middle,
+.partly-clody-night .cloud__middle {
+  fill: #d7e4e9;
+}
+
+.cloudy .cloud__middle,
+.rain .cloud__middle,
+.sleet .cloud__middle,
+.snow .cloud__middle {
+  fill: #8b8e98;
+}
+
+.fog .cloud__front {
+  fill: #dee1e7;
+}
+
+.partly-cloudy-day .cloud__front,
+.partly-clody-night .cloud__front {
+  fill: #e9f6f6;
+}
+
+.cloudy .cloud__front,
+.rain .cloud__front,
+.sleet .cloud__front,
+.snow .cloud__front {
+  fill: #9fa4ad;
+}
+
+.cloud__back {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  animation: move 10s linear infinite;
+}
+
+.cloud__middle {
+  position: absolute;
+  top: 40px;
+  left: 200px;
+  animation: move 8.4s linear infinite;
+}
+
+.cloud__front {
+  animation: move 9s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(-750px);
+  }
+
+  100% {
+    transform: translateX(-375px);
+  }
+}

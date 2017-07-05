@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CurrentWeather /> should render correctly 1`] = `
+<div
+  className="currentWeather"
+>
+  <h3>
+    Seattle, WA
+  </h3>
+  <h1>
+    73
+    °
+  </h1>
+  <img
+    alt="fog"
+    src="../fog.svg"
+  />
+</div>
+`;

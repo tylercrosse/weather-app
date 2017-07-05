@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { geocode } from '../ducks/locations';
-import { fetchForecast } from '../ducks/weather';
-import RecentSearches from './RecentSearches';
-import Search from './Search';
-import CurrentWeather from './CurrentWeather';
-import DayTiles from './forecast/DayTiles';
-import Chart from './forecast/Chart';
-import './App.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { geocode } from "../ducks/locations";
+import { fetchForecast } from "../ducks/weather";
+import RecentSearches from "./RecentSearches";
+import Search from "./Search";
+import CurrentWeather from "./current/CurrentWeather";
+import DayTiles from "./forecast/DayTiles";
+import Chart from "./forecast/Chart";
+import "./App.css";
 
 export class App extends Component {
   render() {
     return (
       <div className="App">
         <section className="current">
-          <Search geocode={this.props.geocode} />
-          {Object.keys(this.props.locations).length !== 0 &&
-            this.props.locations.constructor === Object &&
-            <RecentSearches
-              locations={this.props.locations}
-              fetchForecast={this.props.fetchForecast}
-            />}
-          {this.props.weather.currently &&
-            <CurrentWeather weather={this.props.weather} />}
+          {this.props.weather.currently
+            ? <CurrentWeather
+                weather={this.props.weather}
+                geocode={this.props.geocode}
+              />
+            : <Search geocode={this.props.geocode} />}
         </section>
         {this.props.weather.daily &&
           <section className="forecast">
@@ -39,8 +36,8 @@ App.propTypes = {
   locations: PropTypes.object.isRequired,
   weather: PropTypes.object.isRequired,
   geocode: PropTypes.func.isRequired,
-  fetchForecast: PropTypes.func.isRequired,
-}
+  fetchForecast: PropTypes.func.isRequired
+};
 
 export const mapStateToProps = state => ({
   locations: state.locations,

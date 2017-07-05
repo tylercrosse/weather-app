@@ -1,13 +1,3 @@
-.current {
-  background-color: rgb(128, 204, 228);
-  color: white;
-}
-
-.currentWeather {
-  text-align: center;
-  height: 240px;
-}
-
 .recentSearches {
   margin-top: 20px;
   text-align: center;
