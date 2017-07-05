@@ -1,5 +1,70 @@
+.recentSearches {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.recentSearches__btn {
+  background-color: #fcfcfc;
+  border: 0;
+}
+
+.recentSearch__item {
+  background-color: #fcfcfc;
+  border: 0;
+  margin: 0 20px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.search {
+  width: 600px;
+  margin: 20px auto 0;
+}
+
+.search-no_current {
+  margin-top: 100px;
+}
+
+.search__bar {
+  position: relative;
+  padding-bottom: '0px';
+}
+
+.search__input,
+.search__input:focus,
+.search__input:active {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  border: honeydew;
+  display: block;
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 2px;
+  outline: none;
+}
+
+.search__item {
+  padding: 10px;
+  color: #555;
+  cursor: pointer;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.search__autocomplete_container {
+  position: absolute;
+  width: 100%;
+  border-bottom: honeydew;
+  border-left: honeydew;
+  border-right: honeydew;
+  border-top: 1px solid #e6e6e6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 2px 2px;
+}
+
 .current {
-  color: #888888;
+  color: #555555;
+  fill: #555555;
 }
 
 .currentWeather {
@@ -42,6 +107,21 @@
   width: 100%;
   border: 0;
   background: none;
+  color: inherit;
+}
+
+.location__btn svg {
+  display: inline-block;
+  height: 1.6em;
+  margin-left: 12px;
+  padding: 3px;
+}
+
+.location__btn h3 {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 300;
+  font-size: 1.6em;
 }
 
 .clear-day,
@@ -79,8 +159,6 @@
 /*
 clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sleet snow
  */
-
-
 
 .fog .cloud__back {
   fill: #b8b7bd;

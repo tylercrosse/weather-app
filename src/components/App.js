@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { geocode } from "../ducks/locations";
 import { fetchForecast } from "../ducks/weather";
 import { showSearch } from "../ducks/ui";
-import RecentSearches from "./RecentSearches";
 import Search from "./Search";
 import CurrentWeather from "./current/CurrentWeather";
 import DayTiles from "./forecast/DayTiles";
@@ -23,7 +22,9 @@ export class App extends Component {
                 weather={this.props.weather}
                 geocode={this.props.geocode}
               />
-            : <Search geocode={this.props.geocode} />}
+            : <div className="search-no_current">
+                <Search geocode={this.props.geocode} />
+              </div>}
         </section>
         {this.props.weather.daily &&
           <section className="forecast">
@@ -48,7 +49,6 @@ export const mapStateToProps = state => ({
   weather: state.weather
 });
 
-export default connect(
-  mapStateToProps,
-  { geocode, fetchForecast, showSearch }
-)(App);
+export default connect(mapStateToProps, { geocode, fetchForecast, showSearch })(
+  App
+);
