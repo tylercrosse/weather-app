@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from "enzyme-to-json";
-import Clouds from './Clouds';
+import WeatherBackground from './WeatherBackground';
 
 const setup = () => {
   const props = {
     classes: {}
   }
 
-  const component = <Clouds {...props} />;
+  const component = <WeatherBackground {...props} />;
   const wrapper = shallow(component);
 
   return {
@@ -17,7 +17,7 @@ const setup = () => {
   }
 }
 
-describe('<Clouds />', () => {
+describe('<WeatherBackground />', () => {
   it('should render correctly', () => {
     const { wrapper } = setup();
     expect(toJson(wrapper)).toMatchSnapshot();

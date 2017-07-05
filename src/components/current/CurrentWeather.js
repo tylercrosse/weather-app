@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Clouds from "./Clouds";
+import WeatherBackground from "./WeatherBackground";
 import Search from "./Search";
+import sun from "./sun.svg";
+import moon from "./moon.svg";
 import "./current.css";
 
 class CurrentWeather extends React.Component {
@@ -16,28 +18,48 @@ class CurrentWeather extends React.Component {
   renderBackground() {
     const icon = this.props.weather.currently.icon;
     switch (icon) {
-      // case 'clear-day':
-      //   return (
-      //
-      //   )
-      // case 'clear-night':
-      //   return (
-      //
-      //   )
+      case "clear-day":
+        return (
+          <div className="planet">
+            <img className="planet__sun" src={sun} alt="sun" />
+          </div>
+        );
+      case 'clear-night':
+        return (
+          <div className="planet">
+            <img className="planet__moon" src={moon} alt="moon" />
+          </div>
+        );
       case "cloudy":
-        return <Clouds />;
+        return <WeatherBackground />;
       case "fog":
-        return <Clouds />;
+        return <WeatherBackground />;
       case "partly-cloudy-day":
-        return <Clouds />;
+        return (
+          <WeatherBackground
+            back={
+              <div className="planet">
+                <img className="planet__sun" src={sun} alt="sun" />
+              </div>
+            }
+          />
+        );
       case "partly-cloudy-night":
-        return <Clouds />;
+        return (
+          <WeatherBackground
+            back={
+              <div className="planet">
+                <img className="planet__moon" src={moon} alt="moon" />
+              </div>
+            }
+          />
+        );
       case "rain":
-        return <Clouds />;
+        return <WeatherBackground />;
       case "sleet":
-        return <Clouds />;
+        return <WeatherBackground />;
       case "snow":
-        return <Clouds />;
+        return <WeatherBackground />;
       // case 'wind':
       //   return (
       //

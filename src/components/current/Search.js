@@ -25,7 +25,6 @@ class Search extends React.Component {
     const domNode = ReactDOM.findDOMNode(this.refs.search);
 
     if (!domNode || !domNode.contains(event.target)) {
-      console.log('hide!')
       this.props.hideSearch();
     }
   }
