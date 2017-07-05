@@ -44,13 +44,10 @@ const TemperaturePlot = props => {
           fill: 'rgba(130, 130, 130, 0.1)'
         }}
       />
-      <AreaSeries
+      <LineSeries
         color="#FC0F45"
         curve="curveMonotoneX"
         data={props.tempsData}
-        style={{
-          // fill: 'none'
-        }}
         onNearestX={props.handleNearestX}
       />
       <LineSeries

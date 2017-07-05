@@ -101,16 +101,13 @@ class Chart extends React.Component {
       probCrosshairValues: [],
       windCrosshairValues: []
     };
-    this.timezone = this.props.weather.timezone;
-    this.hourlyData = this.props.weather.hourly.data;
-    this.dailyData = this.props.weather.daily.data;
 
     this.handleNearestX = this.handleNearestX.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.titleFormat = this.titleFormat.bind(this);
   }
   handleNearestX(value, { index }) {
-    const hourData = this.hourlyData[index];
+    const hourData = this.props.hourlyData[index];
     this.setState({
       tempsCrosshairValues: [{ x: value.x, y: hourData.temperature }],
       probCrosshairValues: [
@@ -139,12 +136,12 @@ class Chart extends React.Component {
     if (value) {
       return {
         title: 'time',
-        value: moment.unix(value.x).tz(this.timezone).format('dd h a')
+        value: moment.unix(value.x).tz(this.props.timezone).format('dd h a')
       };
     }
   }
   render() {
-    const { hourlyData, dailyData } = this;
+    const { hourlyData, dailyData } = this.props;
 
     const tempsData = selectDataByAttr(hourlyData, 'temperature');
     const cloudCoverData = selectDataByAttr(hourlyData, 'cloudCover');
@@ -153,7 +150,7 @@ class Chart extends React.Component {
     const windSpeedData = selectDataByAttr(hourlyData, 'windSpeed');
 
     // const currentTime = moment().tz(timezone).format('X');
-    const currentTime = this.props.weather.currently.time;
+    const currentTime = this.props.currentTime;
     const tempsRange = selectRange(tempsData);
     const probRange = { min: 0, max: 1 };
     const windRange = selectRange(windSpeedData);
@@ -206,7 +203,10 @@ class Chart extends React.Component {
 }
 
 Chart.propTypes = {
-  weather: PropTypes.object.isRequired,
+  timezone: PropTypes.string.isRequired,
+  hourlyData: PropTypes.array.isRequired,
+  dailyData: PropTypes.array.isRequired,
+  currentTime: PropTypes.number.isRequired
 }
 
 export default Chart;

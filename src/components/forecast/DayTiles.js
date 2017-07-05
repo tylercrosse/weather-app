@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import 'moment-timezone';
-import './forecast.css';
 
 export const DayTile = ({ day, timezone }) => {
   const time = moment.unix(day.time).tz(timezone).format('ddd D');
@@ -26,9 +25,8 @@ DayTile.propTypes = {
   timezone: PropTypes.string.isRequired,
 }
 
-const DayTiles = ({ weather }) => {
-  const { timezone } = weather;
-  const dayTiles = weather.daily.data
+const DayTiles = ({ timezone, dailyData }) => {
+  const dayTiles = dailyData
     .slice(0, 7)
     .map(day => <DayTile key={day.time} day={day} timezone={timezone} />);
 
@@ -40,7 +38,8 @@ const DayTiles = ({ weather }) => {
 };
 
 DayTiles.propTypes = {
-  weather: PropTypes.object.isRequired,
+  timezone: PropTypes.string.isRequired,
+  dailyData: PropTypes.array.isRequired
 }
 
 export default DayTiles;

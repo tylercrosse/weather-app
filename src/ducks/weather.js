@@ -31,13 +31,17 @@ export const fetchForecast = ({ lat, lng, address }) => dispatch => {
 };
 
 // reducers
-const weather = (state = {}, action) => {
+const initialWeatherState = {
+  timezone: '',
+  currently: { time: 0 },
+  hourly: { data: [] },
+  daily: { data: [] },
+}
+
+const weather = (state = initialWeatherState, action) => {
   switch (action.type) {
     case FORECAST_SUCCESS:
-      return {
-        ...state,
-        ...action.payload
-      };
+      return Object.assign({}, state, {...action.payload})
     default:
       return state;
   }

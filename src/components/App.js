@@ -6,15 +6,14 @@ import { fetchForecast } from "../ducks/weather";
 import { showSearch, hideSearch } from "../ducks/ui";
 import SearchBar from "./SearchBar";
 import CurrentWeather from "./current/CurrentWeather";
-import DayTiles from "./forecast/DayTiles";
-import Chart from "./forecast/Chart";
+import Forecast from "./forecast/Forecast";
 import "./App.css";
 
 export class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.weather.currently
+        {this.props.weather.address
           ? <CurrentWeather
               showSearch={this.props.showSearch}
               hideSearch={this.props.hideSearch}
@@ -27,11 +26,7 @@ export class App extends Component {
           : <div className="search-no_current">
               <SearchBar geocode={this.props.geocode} />
             </div>}
-        {this.props.weather.daily &&
-          <section className="forecast">
-            <DayTiles weather={this.props.weather} />
-            <Chart weather={this.props.weather} />
-          </section>}
+        {this.props.dailyData.length > 0 && <Forecast />}
       </div>
     );
   }
@@ -41,15 +36,24 @@ App.propTypes = {
   locations: PropTypes.object.isRequired,
   weather: PropTypes.object.isRequired,
   geocode: PropTypes.func.isRequired,
-  fetchForecast: PropTypes.func.isRequired
+  fetchForecast: PropTypes.func.isRequired,
+  timezone: PropTypes.string.isRequired,
+  hourlyData: PropTypes.array.isRequired,
+  dailyData: PropTypes.array.isRequired
 };
 
 export const mapStateToProps = state => ({
   ui: state.ui,
   locations: state.locations,
-  weather: state.weather
+  weather: state.weather,
+  timezone: state.weather.timezone,
+  hourlyData: state.weather.hourly.data,
+  dailyData: state.weather.daily.data
 });
 
-export default connect(mapStateToProps, { geocode, fetchForecast, showSearch, hideSearch })(
-  App
-);
+export default connect(mapStateToProps, {
+  geocode,
+  fetchForecast,
+  showSearch,
+  hideSearch
+})(App);

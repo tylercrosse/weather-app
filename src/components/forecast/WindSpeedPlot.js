@@ -34,7 +34,7 @@ const WindSpeedPlot = props => {
       width={880}
       onMouseLeave={props.handleMouseLeave}
     >
-      <YAxis hideLine left={6} tickFormat={v => `${v} mph`} />
+      <YAxis hideLine left={10} tickFormat={v => `${v} mph`} />
       <HorizontalGridLines />
       <VerticalGridLines tickValues={props.dayDivsions} />
       <LineSeries
