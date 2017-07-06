@@ -11,7 +11,7 @@ exports[`<WindSpeedPlot /> should render correctly 1`] = `
   <YAxis
     attr="y"
     hideLine={true}
-    left={6}
+    left={10}
     orientation="left"
     tickFormat={[Function]}
   />

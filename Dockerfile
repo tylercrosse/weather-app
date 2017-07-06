@@ -18,4 +18,4 @@ RUN npm run build
 EXPOSE 4000
 
 # defined in package.json
-CMD [ "npm", "run", "start:server" ]
+CMD [ "npm", "run", "start" ]

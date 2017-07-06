@@ -12,6 +12,12 @@ const setup = () => {
         icon: 'fog',
       },
     },
+    locations: {},
+    geocode: jest.fn(),
+    fetchForecast: jest.fn(),
+    showSearch: jest.fn(),
+    hideSearch: jest.fn(),
+    ui: {}
   }
 
   const component = <CurrentWeather {...props} />;

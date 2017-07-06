@@ -5,10 +5,8 @@ import DayTiles, { DayTile } from './DayTiles';
 
 const setupDayTiles = () => {
   const props = {
-    weather: {
-      timezone: 'America/Los_Angeles',
-      daily: { data: [] }
-    },
+    timezone: 'America/Los_Angeles',
+    dailyData: []
   }
 
   const component = <DayTiles {...props} />;

@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RecentSearches /> should render correctly 1`] = `
+<RecentSearches
+  fetchForecast={[Function]}
+  locations={
+    Object {
+      "ChIJVTPokywQkFQRmtVEaUZlJRA": Object {
+        "address": "Seattle, WA, USA",
+        "id": "ChIJVTPokywQkFQRmtVEaUZlJRA",
+        "lat": 47.6062095,
+        "lng": -122.3320708,
+        "time": 1499098513,
+      },
+      "ChIJW-T2Wt7Gt4kRKl2I1CJFUsI": Object {
+        "address": "Washington, DC, USA",
+        "id": "ChIJW-T2Wt7Gt4kRKl2I1CJFUsI",
+        "lat": 38.9071923,
+        "lng": -77.03687070000001,
+        "time": 1499061460,
+      },
+    }
+  }
+>
+  <div
+    className="recentSearches"
+  >
+    <button
+      className="recentSearch__item"
+      onClick={[Function]}
+    >
+      <svg
+        viewBox="0 0 48 48"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M24,0A24,24,0,1,0,48,24,24,24,0,0,0,24,0Zm0,42A18,18,0,1,1,42,24,18,18,0,0,1,24,42Zm9-21H27V15a3,3,0,0,0-6,0v9a3,3,0,0,0,3,3h9a3,3,0,0,0,0-6Z"
+        />
+      </svg>
+      <p>
+        Seattle, WA, USA
+      </p>
+    </button>
+    <button
+      className="recentSearch__item"
+      onClick={[Function]}
+    >
+      <svg
+        viewBox="0 0 48 48"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M24,0A24,24,0,1,0,48,24,24,24,0,0,0,24,0Zm0,42A18,18,0,1,1,42,24,18,18,0,0,1,24,42Zm9-21H27V15a3,3,0,0,0-6,0v9a3,3,0,0,0,3,3h9a3,3,0,0,0,0-6Z"
+        />
+      </svg>
+      <p>
+        Washington, DC, USA
+      </p>
+    </button>
+  </div>
+</RecentSearches>
+`;

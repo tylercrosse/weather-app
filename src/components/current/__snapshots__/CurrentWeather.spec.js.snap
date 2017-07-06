@@ -1,19 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CurrentWeather /> should render correctly 1`] = `
-<div
-  className="currentWeather"
+<section
+  className="current"
 >
-  <h3>
-    Seattle, WA
-  </h3>
-  <h1>
-    73
-    °
-  </h1>
-  <img
-    alt="fog"
-    src="../fog.svg"
-  />
-</div>
+  <div
+    className="currentWeather fog"
+  >
+    <WeatherBackground />
+    <div
+      className="currentWeather__info"
+    >
+      <div
+        className="currentWeather__summary"
+      >
+        <h1>
+          73°
+        </h1>
+        <p />
+      </div>
+      <div
+        className="currentWeather__location"
+      >
+        <button
+          className="location__btn"
+          onClick={[Function]}
+        >
+          <h3>
+            Seattle, WA
+          </h3>
+          <svg
+            viewBox="0 0 47.92 47.92"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M46.6,40.24,36.05,29.69A19.45,19.45,0,1,0,19.5,39a19.32,19.32,0,0,0,10.19-2.94L40.24,46.6a4.5,4.5,0,1,0,6.36-6.37ZM19.5,33A13.5,13.5,0,1,1,33,19.5,13.5,13.5,0,0,1,19.5,33Z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 `;

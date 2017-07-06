@@ -5,7 +5,7 @@ import WeatherBackground from './WeatherBackground';
 
 const setup = () => {
   const props = {
-    classes: {}
+    classes: ''
   }
 
   const component = <WeatherBackground {...props} />;

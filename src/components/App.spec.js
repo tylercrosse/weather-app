@@ -6,10 +6,13 @@ import { App, mapStateToProps } from "./App";
 const setup = propOverrides => {
   const props = Object.assign(
     {
+      ui: {},
       locations: {},
-      weather: {},
+      weather: { address: 'Seattle, WA'},
       geocode: jest.fn(),
-      fetchForecast: jest.fn()
+      fetchForecast: jest.fn(),
+      showSearch: jest.fn(),
+      hideSearch: jest.fn(),
     },
     propOverrides
   );

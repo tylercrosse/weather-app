@@ -35,6 +35,15 @@ exports[`<TemperaturePlot /> should render correctly 1`] = `
     }
   />
   <LineSeries
+    color="#FC0F45"
+    curve="curveMonotoneX"
+    data={Array []}
+    onNearestX={[Function]}
+    opacity={1}
+    strokeStyle="solid"
+    style={Object {}}
+  />
+  <LineSeries
     color="grey"
     curve={null}
     data={
@@ -52,19 +61,6 @@ exports[`<TemperaturePlot /> should render correctly 1`] = `
     opacity={0.4}
     strokeStyle="solid"
     style={Object {}}
-  />
-  <LineSeries
-    color="red"
-    curve="curveMonotoneX"
-    data={Array []}
-    onNearestX={[Function]}
-    opacity={1}
-    strokeStyle="solid"
-    style={
-      Object {
-        "fill": "none",
-      }
-    }
   />
   <Crosshair
     itemsFormat={[Function]}

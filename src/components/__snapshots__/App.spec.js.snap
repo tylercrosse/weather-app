@@ -3,7 +3,10 @@
 exports[`<App /> should receive the correct props from state 1`] = `
 Object {
   "locations": Object {},
-  "weather": Object {},
+  "ui": Object {},
+  "weather": Object {
+    "address": "Seattle, WA",
+  },
 }
 `;
 
@@ -11,13 +14,20 @@ exports[`no conditionals 1`] = `
 <div
   className="App"
 >
-  <section
-    className="current"
-  >
-    <Search
-      geocode={[Function]}
-    />
-  </section>
+  <CurrentWeather
+    fetchForecast={[Function]}
+    geocode={[Function]}
+    hideSearch={[Function]}
+    locations={Object {}}
+    showSearch={[Function]}
+    ui={Object {}}
+    weather={
+      Object {
+        "address": "Seattle, WA",
+      }
+    }
+  />
+  <Connect(Component) />
 </div>
 `;
 
@@ -25,24 +35,24 @@ exports[`with current weather 1`] = `
 <div
   className="App"
 >
-  <section
-    className="current"
-  >
-    <Search
-      geocode={[Function]}
-    />
-    <CurrentWeather
-      weather={
-        Object {
-          "address": "Seattle, WA",
-          "currently": Object {
-            "icon": "fog",
-            "temperature": 73,
-          },
-        }
+  <CurrentWeather
+    fetchForecast={[Function]}
+    geocode={[Function]}
+    hideSearch={[Function]}
+    locations={Object {}}
+    showSearch={[Function]}
+    ui={Object {}}
+    weather={
+      Object {
+        "address": "Seattle, WA",
+        "currently": Object {
+          "icon": "fog",
+          "temperature": 73,
+        },
       }
-    />
-  </section>
+    }
+  />
+  <Connect(Component) />
 </div>
 `;
 
@@ -50,31 +60,13 @@ exports[`with forecast 1`] = `
 <div
   className="App"
 >
-  <section
-    className="current"
+  <div
+    className="search-no_current"
   >
-    <Search
+    <SearchBar
       geocode={[Function]}
     />
-  </section>
-  <section
-    className="forecast"
-  >
-    <DayTiles
-      weather={
-        Object {
-          "daily": Object {},
-        }
-      }
-    />
-    <Chart
-      weather={
-        Object {
-          "daily": Object {},
-        }
-      }
-    />
-  </section>
+  </div>
 </div>
 `;
 
@@ -82,33 +74,36 @@ exports[`with recent searches 1`] = `
 <div
   className="App"
 >
-  <section
-    className="current"
-  >
-    <RecentSearches
-      fetchForecast={[Function]}
-      locations={
-        Object {
-          "ChIJVTPokywQkFQRmtVEaUZlJRA": Object {
-            "address": "Seattle, WA, USA",
-            "id": "ChIJVTPokywQkFQRmtVEaUZlJRA",
-            "lat": 47.6062095,
-            "lng": -122.3320708,
-            "time": 1499098513,
-          },
-          "ChIJW-T2Wt7Gt4kRKl2I1CJFUsI": Object {
-            "address": "Washington, DC, USA",
-            "id": "ChIJW-T2Wt7Gt4kRKl2I1CJFUsI",
-            "lat": 38.9071923,
-            "lng": -77.03687070000001,
-            "time": 1499061460,
-          },
-        }
+  <CurrentWeather
+    fetchForecast={[Function]}
+    geocode={[Function]}
+    hideSearch={[Function]}
+    locations={
+      Object {
+        "ChIJVTPokywQkFQRmtVEaUZlJRA": Object {
+          "address": "Seattle, WA, USA",
+          "id": "ChIJVTPokywQkFQRmtVEaUZlJRA",
+          "lat": 47.6062095,
+          "lng": -122.3320708,
+          "time": 1499098513,
+        },
+        "ChIJW-T2Wt7Gt4kRKl2I1CJFUsI": Object {
+          "address": "Washington, DC, USA",
+          "id": "ChIJW-T2Wt7Gt4kRKl2I1CJFUsI",
+          "lat": 38.9071923,
+          "lng": -77.03687070000001,
+          "time": 1499061460,
+        },
       }
-    />
-    <Search
-      geocode={[Function]}
-    />
-  </section>
+    }
+    showSearch={[Function]}
+    ui={Object {}}
+    weather={
+      Object {
+        "address": "Seattle, WA",
+      }
+    }
+  />
+  <Connect(Component) />
 </div>
 `;

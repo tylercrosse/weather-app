@@ -26,29 +26,26 @@ export class App extends Component {
           : <div className="search-no_current">
               <SearchBar geocode={this.props.geocode} />
             </div>}
-        {this.props.dailyData.length > 0 && <Forecast />}
+        {this.props.weather.address && <Forecast />}
       </div>
     );
   }
 }
 
 App.propTypes = {
+  ui: PropTypes.object.isRequired,
   locations: PropTypes.object.isRequired,
   weather: PropTypes.object.isRequired,
+  showSearch: PropTypes.func.isRequired,
+  hideSearch: PropTypes.func.isRequired,
   geocode: PropTypes.func.isRequired,
   fetchForecast: PropTypes.func.isRequired,
-  timezone: PropTypes.string.isRequired,
-  hourlyData: PropTypes.array.isRequired,
-  dailyData: PropTypes.array.isRequired
 };
 
 export const mapStateToProps = state => ({
   ui: state.ui,
   locations: state.locations,
   weather: state.weather,
-  timezone: state.weather.timezone,
-  hourlyData: state.weather.hourly.data,
-  dailyData: state.weather.daily.data
 });
 
 export default connect(mapStateToProps, {

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Forecast /> should render correctly 1`] = `
+<section
+  className="forecast"
+>
+  <DayTiles
+    dailyData={Array []}
+    timezone="America/Los_Angeles"
+  />
+  <Chart
+    currentTime={1499105000}
+    dailyData={Array []}
+    hourlyData={Array []}
+    timezone="America/Los_Angeles"
+  />
+</section>
+`;

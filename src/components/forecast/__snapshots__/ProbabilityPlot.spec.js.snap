@@ -61,24 +61,12 @@ exports[`<ProbabilityPlot /> should render correctly 1`] = `
   />
   <AreaSeries
     className=""
-    color="#1923FA"
+    color="rgb(25, 35, 250)"
     curve="curveMonotoneX"
     data={Array []}
     style={
       Object {
-        "fill": "rgba(31, 89, 217, 0.5)",
-      }
-    }
-  />
-  <LineSeries
-    color="#2BEEA3"
-    curve="curveMonotoneX"
-    data={Array []}
-    opacity={1}
-    strokeStyle="solid"
-    style={
-      Object {
-        "fill": "none",
+        "fill": "rgba(25, 35, 250, 0.5)",
       }
     }
   />
@@ -91,6 +79,18 @@ exports[`<ProbabilityPlot /> should render correctly 1`] = `
     style={
       Object {
         "fill": "rgba(130, 130, 130, 0.2)",
+      }
+    }
+  />
+  <LineSeries
+    color="#2BEEA3"
+    curve="curveMonotoneX"
+    data={Array []}
+    opacity={1}
+    strokeStyle="solid"
+    style={
+      Object {
+        "fill": "none",
       }
     }
   />

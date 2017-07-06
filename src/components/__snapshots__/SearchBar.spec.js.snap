@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Search /> should render correctly 1`] = `
+exports[`<SearchBar /> should render correctly 1`] = `
 <div
   className="search"
 >
@@ -15,7 +15,7 @@ exports[`<Search /> should render correctly 1`] = `
     }
     clearItemsOnError={false}
     debounce={200}
-    highlightFirstSuggestion={false}
+    highlightFirstSuggestion={true}
     inputProps={
       Object {
         "autoFocus": true,

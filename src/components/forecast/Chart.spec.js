@@ -5,10 +5,14 @@ import toJson from "enzyme-to-json";
 import Chart from "./Chart";
 import weatherJSON from "../../../test/weatherData.json";
 
+const { weather } = {...weatherJSON}
 
 const setup = () => {
   const props = {
-    ...weatherJSON
+    hourlyData: weather.hourly.data,
+    dailyData: weather.daily.data,
+    timezone: weather.timezone,
+    currentTime: weather.currently.time
   };
 
   const component = <Chart {...props} />;
