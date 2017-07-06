@@ -12,10 +12,9 @@ const HOST = process.env.HOST || '127.0.0.1';
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use('/', router);
-
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
+app.use('/', router);
 
 // Listen for requests
 app.listen(PORT, HOST, err => {

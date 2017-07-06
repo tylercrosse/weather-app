@@ -6,7 +6,7 @@ const path = require('path');
  * @param  {Object} res Express response
  */
 const serveIndex = (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', '..', 'build', 'index.html'));
 };
 
 module.exports = {

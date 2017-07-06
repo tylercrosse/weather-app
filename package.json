@@ -1,6 +1,9 @@
 {
   "name": "weather-app",
   "version": "0.1.0",
+  "engines": {
+    "node": "8.1.2"
+  },
   "private": true,
   "proxy": "http://localhost:4000",
   "dependencies": {
@@ -35,6 +38,7 @@
   "scripts": {
     "precommit": "npm run test && lint-staged",
     "start": "concurrently \"node server\" \"react-scripts start\"",
+    "start:server": "node server",
     "build": "react-scripts build",
     "test:watch": "react-scripts test --env=jsdom",
     "test": "react-scripts test --env=jsdom --coverage",
