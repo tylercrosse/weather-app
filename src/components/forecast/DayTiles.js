@@ -8,10 +8,10 @@ export const DayTile = ({ day, timezone }) => {
   return (
     <div className="dayTile">
       <div>{time}</div>
+      <img src={`../../${day.icon}.svg`} alt={day.icon} />
       <div>
         {Math.round(day.temperatureMax)} / {Math.round(day.temperatureMin)}
       </div>
-      <img src={`../../${day.icon}.svg`} alt={day.icon} />
     </div>
   );
 };

@@ -7,15 +7,15 @@ exports[`<DayTile /> should render correctly 1`] = `
   <div>
     Invalid date
   </div>
+  <img
+    alt="fog"
+    src="../../fog.svg"
+  />
   <div>
     75
      / 
     45
   </div>
-  <img
-    alt="fog"
-    src="../../fog.svg"
-  />
 </div>
 `;
 

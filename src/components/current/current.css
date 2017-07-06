@@ -166,6 +166,14 @@
   }
 }
 
+.clear-night .currentWeather__location,
+.cloudy .currentWeather__location,
+.rain .currentWeather__location,
+.sleet .currentWeather__location {
+  fill: #f0f0f0;
+}
+
+.wind,
 .clear-day,
 .partly-cloudy-day {
   background-color: rgb(128, 204, 228);
@@ -173,7 +181,7 @@
 
 .clear-night,
 .partly-cloudy-night {
-  background-color: rgb(108, 100, 112);
+  background-color: rgb(35, 38, 68);
 }
 
 .clear-night {
@@ -270,6 +278,7 @@ clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sle
   fill: #b8b7bd;
 }
 
+.wind .cloud__back,
 .partly-cloudy-day .cloud__back,
 .partly-cloudy-night .cloud__back {
   fill: #ccd9dd;
@@ -286,6 +295,7 @@ clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sle
   fill: #c9dde4;
 }
 
+.wind .cloud__middle,
 .partly-cloudy-day .cloud__middle,
 .partly-cloudy-night .cloud__middle {
   fill: #d7e4e9;
@@ -302,6 +312,7 @@ clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sle
   fill: #dee1e7;
 }
 
+.wind .cloud__front,
 .partly-cloudy-day .cloud__front,
 .partly-cloudy-night .cloud__front {
   fill: #e9f6f6;
@@ -335,16 +346,16 @@ clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sle
   animation: pan-cloud 9s linear infinite;
 }
 
-.windy .cloud__front {
-  animation: pan-cloud 5s linear infinite;
+.wind .cloud__front {
+  animation: pan-cloud 2s linear infinite;
 }
 
-.windy .cloud__middle {
-  animation: pan-cloud 4.2s linear infinite;
+.wind .cloud__middle {
+  animation: pan-cloud 3.2s linear infinite;
 }
 
-.windy .cloud__back {
-  animation: pan-cloud 4.5s linear infinite;
+.wind .cloud__back {
+  animation: pan-cloud 3.5s linear infinite;
 }
 
 @keyframes pan-cloud {
