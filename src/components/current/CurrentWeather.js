@@ -55,15 +55,40 @@ class CurrentWeather extends React.Component {
           />
         );
       case "rain":
-        return <WeatherBackground />;
+        return (
+          <WeatherBackground
+            middle={
+              <img className="middle" src="../../rain-bg.png" alt="rain"/>
+            }
+            back={
+              <img className="back" src="../../rain-bg.png" alt="rain"/>
+            }
+          />
+        );
       case "sleet":
-        return <WeatherBackground />;
+        return (
+          <WeatherBackground
+            middle={
+              <img className="middle" src="../../rain-bg.png" alt="rain"/>
+            }
+            back={
+              <img className="back" src="../../rain-bg.png" alt="rain"/>
+            }
+          />
+        );
       case "snow":
+        return (
+          <WeatherBackground
+            middle={
+              <img className="middle" src="../../snow-bg.png" alt="snow"/>
+            }
+            back={
+              <img className="back" src="../../snow-bg.png" alt="snow"/>
+            }
+          />
+        );
+      case 'wind':
         return <WeatherBackground />;
-      // case 'wind':
-      //   return (
-      //
-      //   )
       default:
         // FIXME better case for bad response
         return "";

@@ -51,6 +51,7 @@ class SearchBar extends React.Component {
           onEnterKeyDown={this.handleSelect}
           classNames={cssClasses}
           autocompleteItem={AutocompleteItem}
+          highlightFirstSuggestion
         />
       </div>
     );

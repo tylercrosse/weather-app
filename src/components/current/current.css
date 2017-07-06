@@ -30,6 +30,12 @@
   display: inline-block;
 }
 
+.rain .recentSearch__item p,
+.sleet .recentSearch__item p,
+.snow .recentSearch__item p {
+  font-weight: 400;
+}
+
 .search {
   width: 600px;
   margin: 20px auto 0;
@@ -171,19 +177,77 @@
 }
 
 .clear-night {
-  color: #dddddd;
+  color: #f0f0f0;
 }
 
 .cloudy,
+.rain {
+  background-color: #c5c8cd;
+  color: #f0f0f0;
+}
+
+.sleet {
+  background-color: #e9e9e9;
+  color: #f0f0f0;
+}
+
 .rain,
 .sleet {
-  background-color: #c5c8cd;
-  color: #dddddd;
+  font-weight: 400;
 }
 
 .fog,
 .snow {
+  color: rgb(28, 28, 28);
+  font-weight: 400;
   background-color: #e9e9e9;
+}
+
+.rain .middle,
+.sleet .middle,
+.snow .middle {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: percip-fall 20s linear infinite;
+}
+
+.rain .middle,
+.sleet .middle {
+  animation: percip-fall 3s linear infinite;
+}
+
+.snow .middle {
+  animation: percip-fall 20s linear infinite;
+}
+
+.rain .back,
+.sleet .back,
+.snow .back {
+  width: 80%;
+  position: absolute;
+  top: 0;
+  left: 10%;
+}
+
+.rain .back,
+.sleet .back {
+  animation: percip-fall 4s linear infinite;
+}
+
+.snow .back {
+  animation: percip-fall 24s linear infinite;
+}
+
+@keyframes percip-fall {
+  0% {
+    transform: translateY(-50%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .weather__background {
@@ -269,6 +333,18 @@ clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sle
   top: 0;
   left: 0;
   animation: pan-cloud 9s linear infinite;
+}
+
+.windy .cloud__front {
+  animation: pan-cloud 5s linear infinite;
+}
+
+.windy .cloud__middle {
+  animation: pan-cloud 4.2s linear infinite;
+}
+
+.windy .cloud__back {
+  animation: pan-cloud 4.5s linear infinite;
 }
 
 @keyframes pan-cloud {
