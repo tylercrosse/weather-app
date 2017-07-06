@@ -10,10 +10,10 @@ You can test a fully working live demo at https://weather-app-avftevexwx.now.sh/
 ---
 ### Major features
 
-- Current & forecasted weather for any location
-- Location search with autocomplete
-- Charts showing forecasted weather for the next week & the weather that already occurred today
-- Search history stored in session
+- Current & forecasted weather for any location. Weather data from the [dark sky api](https://darksky.net/dev/).
+- Location search with autocomplete, with help from the [google places service](https://developers.google.com/maps/documentation/geocoding/intro).
+- Charts showing forecasted weather for the next week & the weather that already occurred today.
+- Search history stored in session.
 
 ---
 ### Wish List
