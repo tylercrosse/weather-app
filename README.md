@@ -2,6 +2,10 @@
 
 This is app was built in my spare time over a week as part of a coding challenge. I'm currently looking for a new position in Seattle - Hire me!
 
+<div align="center">
+  <img src="https://cdn.rawgit.com/tylercrosse/weather-app/67fa43dd/public/weather-app.jpg" alt="preview image">
+</div>
+
 ---
 ### Demo
 
