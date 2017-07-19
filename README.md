@@ -9,7 +9,7 @@ This is app was built in my spare time over a week as part of a coding challenge
 ---
 ### Demo
 
-You can test a fully working live demo at https://weather-app-avftevexwx.now.sh/
+You can test a fully working live demo at http://forecast.tk
 
 ---
 ### Major features
