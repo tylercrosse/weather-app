@@ -99,6 +99,12 @@
 }
 
 @media (max-width: 425px) {
+  .recentSearch__item {
+    margin: 0 4px;
+    width: 30%;
+    font-size: 12px;
+  }
+
   .search__input,
   .search__input:focus,
   .search__input:active {
@@ -146,6 +152,10 @@
   margin: 0;
 }
 
+.currentWeather__location {
+  fill: #555555;
+}
+
 .location__btn {
   align-self: flex-end;
   cursor: pointer;
@@ -184,8 +194,8 @@
   }
 
   .currentWeather__summary {
-    margin: 0;
-    text-align: center;
+    text-align: left;
+    margin: 0 0 0 7px;
   }
 
   .currentWeather__summary h1 {
@@ -198,6 +208,10 @@
 
   .currentWeather__location {
     margin-top: 10px;
+  }
+
+  .location__btn {
+    text-align: left;
   }
 
   .location__btn svg {
