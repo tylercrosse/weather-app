@@ -34,7 +34,7 @@ const ProbabilityPlot = props => {
       className="forecast__chart chart__prob"
       yDomain={[0, 1]}
       height={160}
-      width={880}
+      width={props.chartWidth}
       onMouseLeave={props.handleMouseLeave}
     >
       <YAxis hideLine left={6} tickFormat={v => `${v * 100}%`} />
@@ -87,6 +87,7 @@ const ProbabilityPlot = props => {
 };
 
 ProbabilityPlot.propTypes = {
+  chartWidth: PropTypes.number.isRequired,
   crosshairValues: PropTypes.array.isRequired,
   handleMouseLeave: PropTypes.func.isRequired,
   handleNearestX: PropTypes.func.isRequired,

@@ -111,8 +111,8 @@
 }
 
 .current {
+  width: 100%;
   color: #555555;
-  /*fill: #555555;*/
 }
 
 .currentWeather {

@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import moment from 'moment';
-import 'moment-timezone';
-import TemperaturePlot from './TemperaturePlot';
-import ProbabilityPlot from './ProbabilityPlot';
-import WindSpeedPlot from './WindSpeedPlot';
+import React from "react";
+import PropTypes from "prop-types";
+import moment from "moment";
+import "moment-timezone";
+import TemperaturePlot from "./TemperaturePlot";
+import ProbabilityPlot from "./ProbabilityPlot";
+import WindSpeedPlot from "./WindSpeedPlot";
 
 /**
  * Get the first non-empty item from an array.
@@ -97,6 +97,7 @@ class Chart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      chartWidth: 880,
       tempsCrosshairValues: [],
       probCrosshairValues: [],
       windCrosshairValues: []
@@ -105,6 +106,15 @@ class Chart extends React.Component {
     this.handleNearestX = this.handleNearestX.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.titleFormat = this.titleFormat.bind(this);
+  }
+  componentWillMount() {
+    // adjust chart width WRT screen size
+    const deviceWidth = window.innerWidth;
+    if (deviceWidth > 425) {
+      this.setState({ chartWidth: 880 });
+    } else {
+      this.setState({ chartWidth: 660 });
+    }
   }
   handleNearestX(value, { index }) {
     const hourData = this.props.hourlyData[index];
@@ -135,19 +145,19 @@ class Chart extends React.Component {
 
     if (value) {
       return {
-        title: 'time',
-        value: moment.unix(value.x).tz(this.props.timezone).format('dd h a')
+        title: "time",
+        value: moment.unix(value.x).tz(this.props.timezone).format("dd h a")
       };
     }
   }
   render() {
     const { hourlyData, dailyData } = this.props;
 
-    const tempsData = selectDataByAttr(hourlyData, 'temperature');
-    const cloudCoverData = selectDataByAttr(hourlyData, 'cloudCover');
-    const percipProbData = selectDataByAttr(hourlyData, 'precipProbability');
-    const humidityData = selectDataByAttr(hourlyData, 'humidity');
-    const windSpeedData = selectDataByAttr(hourlyData, 'windSpeed');
+    const tempsData = selectDataByAttr(hourlyData, "temperature");
+    const cloudCoverData = selectDataByAttr(hourlyData, "cloudCover");
+    const percipProbData = selectDataByAttr(hourlyData, "precipProbability");
+    const humidityData = selectDataByAttr(hourlyData, "humidity");
+    const windSpeedData = selectDataByAttr(hourlyData, "windSpeed");
 
     // const currentTime = moment().tz(timezone).format('X');
     const currentTime = this.props.currentTime;
@@ -164,6 +174,7 @@ class Chart extends React.Component {
     return (
       <div className="forecast__chart">
         <TemperaturePlot
+          chartWidth={this.state.chartWidth}
           crosshairValues={this.state.tempsCrosshairValues}
           handleMouseLeave={this.handleMouseLeave}
           handleNearestX={this.handleNearestX}
@@ -175,6 +186,7 @@ class Chart extends React.Component {
           tempsData={tempsData}
         />
         <ProbabilityPlot
+          chartWidth={this.state.chartWidth}
           crosshairValues={this.state.probCrosshairValues}
           handleMouseLeave={this.handleMouseLeave}
           handleNearestX={this.handleNearestX}
@@ -187,6 +199,7 @@ class Chart extends React.Component {
           cloudCoverData={cloudCoverData}
         />
         <WindSpeedPlot
+          chartWidth={this.state.chartWidth}
           crosshairValues={this.state.windCrosshairValues}
           handleMouseLeave={this.handleMouseLeave}
           handleNearestX={this.handleNearestX}
@@ -207,6 +220,6 @@ Chart.propTypes = {
   hourlyData: PropTypes.array.isRequired,
   dailyData: PropTypes.array.isRequired,
   currentTime: PropTypes.number.isRequired
-}
+};
 
 export default Chart;

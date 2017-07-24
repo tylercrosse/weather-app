@@ -7,13 +7,15 @@ import "./forecast.css";
 
 export const Forecast = ({ currentTime, timezone, dailyData, hourlyData }) =>
   <section className="forecast">
-    <DayTiles timezone={timezone} dailyData={dailyData} />
-    <Chart
-      currentTime={currentTime}
-      timezone={timezone}
-      dailyData={dailyData}
-      hourlyData={hourlyData}
-    />
+    <div className="forecast__container">
+      <DayTiles timezone={timezone} dailyData={dailyData} />
+      <Chart
+        currentTime={currentTime}
+        timezone={timezone}
+        dailyData={dailyData}
+        hourlyData={hourlyData}
+      />
+    </div>
   </section>;
 
 Forecast.propTypes = {

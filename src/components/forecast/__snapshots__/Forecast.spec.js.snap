@@ -4,15 +4,19 @@ exports[`<Forecast /> should render correctly 1`] = `
 <section
   className="forecast"
 >
-  <DayTiles
-    dailyData={Array []}
-    timezone="America/Los_Angeles"
-  />
-  <Chart
-    currentTime={1499105000}
-    dailyData={Array []}
-    hourlyData={Array []}
-    timezone="America/Los_Angeles"
-  />
+  <div
+    className="forecast__container"
+  >
+    <DayTiles
+      dailyData={Array []}
+      timezone="America/Los_Angeles"
+    />
+    <Chart
+      currentTime={1499105000}
+      dailyData={Array []}
+      hourlyData={Array []}
+      timezone="America/Los_Angeles"
+    />
+  </div>
 </section>
 `;
