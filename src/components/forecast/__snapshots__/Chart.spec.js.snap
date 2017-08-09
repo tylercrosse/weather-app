@@ -5,6 +5,7 @@ exports[`<Chart /> should render correctly 1`] = `
   className="forecast__chart"
 >
   <TemperaturePlot
+    chartWidth={880}
     crosshairValues={Array []}
     currentTime={1499105000}
     dayDivsions={
@@ -840,6 +841,7 @@ exports[`<Chart /> should render correctly 1`] = `
     titleFormat={[Function]}
   />
   <ProbabilityPlot
+    chartWidth={880}
     cloudCoverData={
       Array [
         Object {
@@ -3029,6 +3031,7 @@ exports[`<Chart /> should render correctly 1`] = `
     titleFormat={[Function]}
   />
   <WindSpeedPlot
+    chartWidth={880}
     crosshairValues={Array []}
     currentTime={1499105000}
     dayDivsions={

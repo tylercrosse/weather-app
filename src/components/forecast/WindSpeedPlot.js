@@ -31,7 +31,7 @@ const WindSpeedPlot = props => {
       animation
       className="forecast__chart chart__wind"
       height={120}
-      width={880}
+      width={props.chartWidth}
       onMouseLeave={props.handleMouseLeave}
     >
       <YAxis hideLine left={10} tickFormat={v => `${v} mph`} />
@@ -71,6 +71,7 @@ const WindSpeedPlot = props => {
 };
 
 WindSpeedPlot.propTypes = {
+  chartWidth: PropTypes.number.isRequired,
   crosshairValues: PropTypes.array.isRequired,
   handleMouseLeave: PropTypes.func.isRequired,
   handleNearestX: PropTypes.func.isRequired,

@@ -10,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #fcfcfc;
+  overflow-x: hidden;
 }
 
 button:focus {

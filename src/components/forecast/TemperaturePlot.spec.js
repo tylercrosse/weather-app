@@ -5,6 +5,7 @@ import TemperaturePlot from './TemperaturePlot';
 
 const setup = () => {
   const props = {
+    chartWidth: 880,
     crosshairValues: [],
     handleMouseLeave: jest.fn(),
     handleNearestX: jest.fn(),

@@ -31,7 +31,7 @@ const TemperaturePlot = props => {
       animation
       className="forecast__chart chart__temps"
       height={200}
-      width={880}
+      width={props.chartWidth}
       onMouseLeave={props.handleMouseLeave}
     >
       <YAxis hideLine left={6} tickFormat={v => `${v}°F`} />
@@ -68,6 +68,7 @@ const TemperaturePlot = props => {
 };
 
 TemperaturePlot.propTypes = {
+  chartWidth: PropTypes.number.isRequired,
   crosshairValues: PropTypes.array.isRequired,
   handleMouseLeave: PropTypes.func.isRequired,
   handleNearestX: PropTypes.func.isRequired,

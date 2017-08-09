@@ -82,9 +82,43 @@
   border-radius: 0 0 2px 2px;
 }
 
+@media (max-width: 900px) {
+  .search {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .search {
+    width: 90%;
+  }
+
+  .search-no_current {
+    margin: 60px 5% 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .recentSearch__item {
+    margin: 0 4px;
+    width: 30%;
+    font-size: 12px;
+  }
+
+  .search__input,
+  .search__input:focus,
+  .search__input:active {
+    padding: 10px;
+  }
+
+  .search__item {
+    padding: 6px;
+  }
+}
+
 .current {
+  width: 100%;
   color: #555555;
-  /*fill: #555555;*/
 }
 
 .currentWeather {
@@ -118,6 +152,10 @@
   margin: 0;
 }
 
+.currentWeather__location {
+  fill: #555555;
+}
+
 .location__btn {
   align-self: flex-end;
   cursor: pointer;
@@ -141,6 +179,72 @@
   font-size: 1.6em;
 }
 
+@media (max-width: 900px) {
+  .currentWeather__info {
+    width: 84%;
+  }
+}
+
+@media (max-width: 768px) {
+  .currentWeather__info {
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px 2.5% 0;
+    width: 95%;
+  }
+
+  .currentWeather__summary {
+    text-align: left;
+    margin: 0 0 0 7px;
+  }
+
+  .currentWeather__summary h1 {
+    font-size: 4em;
+  }
+
+  .currentWeather__summary p {
+    font-size: 1em;
+  }
+
+  .currentWeather__location {
+    margin-top: 10px;
+  }
+
+  .location__btn {
+    text-align: left;
+  }
+
+  .location__btn svg {
+    height: 1.2em;
+  }
+
+  .location__btn h3 {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 425px) {
+  .currentWeather {
+    height: 300px;
+  }
+
+  .currentWeather__summary h1 {
+    font-size: 3em;
+  }
+
+  .currentWeather__summary p {
+    font-size: 0.9em;
+  }
+
+  .location__btn svg {
+    height: 1em;
+  }
+
+  .location__btn h3 {
+    font-size: 1em;
+  }
+}
+
 .planet {
   height: 100%;
   display: flex;
@@ -154,6 +258,12 @@
 
 .planet__sun {
   animation: sun-spin infinite 30s linear;
+}
+
+@media (max-width: 425px) {
+  .planet img {
+    width: 150px;
+  }
 }
 
 @keyframes sun-spin {
@@ -265,11 +375,6 @@
   height: 100%;
 }
 
-.cloud {
-  height: 150px;
-  width: 3000px;
-}
-
 /*
 clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sleet snow
  */
@@ -325,45 +430,100 @@ clear-day clear-night cloudy fog partly-cloudy-day partyly-cloudy-night rain sle
   fill: #9fa4ad;
 }
 
+.cloud {
+  height: 150px;
+  width: 3000px;
+}
+
 .cloud__back {
   position: absolute;
   top: 80px;
   left: 80px;
-  animation: pan-cloud 10s linear infinite;
+  animation: pan-cloud-L 10s linear infinite;
 }
 
 .cloud__middle {
   position: absolute;
   top: 40px;
   left: 200px;
-  animation: pan-cloud 8.4s linear infinite;
+  animation: pan-cloud-L 8.4s linear infinite;
 }
 
 .cloud__front {
   position: absolute;
   top: 0;
   left: 0;
-  animation: pan-cloud 9s linear infinite;
+  animation: pan-cloud-L 9s linear infinite;
 }
 
 .wind .cloud__front {
-  animation: pan-cloud 2s linear infinite;
+  animation: pan-cloud-L 2s linear infinite;
 }
 
 .wind .cloud__middle {
-  animation: pan-cloud 3.2s linear infinite;
+  animation: pan-cloud-L 3.2s linear infinite;
 }
 
 .wind .cloud__back {
-  animation: pan-cloud 3.5s linear infinite;
+  animation: pan-cloud-L 3.5s linear infinite;
 }
 
-@keyframes pan-cloud {
+@media (max-width: 425px) {
+  .cloud {
+    height: 100px;
+    width: 2000px;
+  }
+
+  .cloud__back {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    animation: pan-cloud-M 10s linear infinite;
+  }
+
+  .cloud__middle {
+    position: absolute;
+    top: 40px;
+    left: 200px;
+    animation: pan-cloud-M 8.4s linear infinite;
+  }
+
+  .cloud__front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: pan-cloud-M 9s linear infinite;
+  }
+
+  .wind .cloud__front {
+    animation: pan-cloud-M 2s linear infinite;
+  }
+
+  .wind .cloud__middle {
+    animation: pan-cloud-M 3.2s linear infinite;
+  }
+
+  .wind .cloud__back {
+    animation: pan-cloud-M 3.5s linear infinite;
+  }
+}
+
+@keyframes pan-cloud-L {
   0% {
     transform: translateX(-750px);
   }
 
   100% {
     transform: translateX(-375px);
+  }
+}
+
+@keyframes pan-cloud-M {
+  0% {
+    transform: translateX(-500px);
+  }
+
+  100% {
+    transform: translateX(-250px);
   }
 }

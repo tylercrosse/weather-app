@@ -5,6 +5,7 @@ import ProbabilityPlot from './ProbabilityPlot';
 
 const setup = () => {
   const props = {
+    chartWidth: 880,
     crosshairValues: [],
     handleMouseLeave: jest.fn(),
     handleNearestX: jest.fn(),
