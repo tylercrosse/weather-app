@@ -9,7 +9,7 @@ This is app was built in my spare time over a week as part of a coding challenge
 ---
 ### Demo
 
-You can test a fully working live demo at http://forecast.tk
+You can test a fully working live demo at http://calm-forecast.com/
 
 ---
 ### Major features
