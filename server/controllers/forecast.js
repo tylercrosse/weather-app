@@ -4,8 +4,8 @@ const _ = require('lodash');
 
 /**
  * Get forecast data for a given lat long.
- * Reponse contains 168+ hrs of hourly data starting at 12:00 AM of current day,
- * this requires two HTTP requests to the darksky API. One is historic data
+ * Response contains 168+ hrs of hourly data starting at 12:00 AM of current 
+ * day, this requires two HTTP requests to the darksky API. One is historic data
  * @param  {Object} req Express request, containing a latlng string
  * @param  {Object} res Express response, forecast data formatted in JSON
  */

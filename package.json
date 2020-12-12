@@ -2,7 +2,7 @@
   "name": "weather-app",
   "version": "0.1.0",
   "engines": {
-    "node": "8.1.2"
+    "node": ">8.1.2"
   },
   "private": true,
   "proxy": "http://localhost:4000",
